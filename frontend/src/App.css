@@ -1,0 +1,422 @@
+/* Header */
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.app-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.1em;
+  line-height: 1.2;
+}
+
+.app-header .subtitle {
+  font-size: 1em;
+  color: #666;
+  margin-top: 0;
+}
+
+.star-icon {
+  width: 48px;
+  border: none !important;
+}
+
+/* Filter Tabs */
+.filter-bar {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.filter-bar button {
+  padding: 0.3em 0.8em;
+  cursor: pointer;
+  font-family: 'Short Stack', cursive;
+  font-size: 0.85em;
+  background-color: transparent;
+}
+
+.filter-bar button.active {
+  background-color: #FF5E5B;
+  color: white;
+}
+
+/* Scoreboard Table */
+.scoreboard-table {
+  width: 100%;
+  font-size: 0.85em;
+}
+
+.scoreboard-table th {
+  text-align: left;
+  padding: 0.5em 0.4em;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.scoreboard-table td {
+  padding: 0.5em 0.4em;
+}
+
+.scoreboard-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.scoreboard-table tbody tr:hover {
+  background-color: rgba(255, 94, 91, 0.08);
+}
+
+/* User cell */
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none !important;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user-handle {
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.user-role-tag {
+  font-size: 0.7em;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.role-judge {
+  background-color: #FF5E5B;
+  color: white;
+}
+
+.role-organizer {
+  background-color: #3c3c3c;
+  color: white;
+}
+
+/* Grade styling */
+.grade {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.grade-a { color: #2d8a4e; }
+.grade-b { color: #5a9e3f; }
+.grade-c { color: #b8860b; }
+.grade-d { color: #d35400; }
+.grade-f { color: #c0392b; }
+
+/* Sus bar */
+.sus-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.sus-bar {
+  width: 60px;
+  height: 12px;
+  border-style: solid;
+  border-width: 3px;
+  border-image: url(/doodle/button.svg) 3 3 3 3 stretch stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.sus-bar-fill {
+  height: 100%;
+  background-color: #FF5E5B;
+  transition: width 0.3s ease;
+}
+
+.sus-label {
+  font-size: 0.8em;
+  min-width: 2em;
+}
+
+/* Worst commit */
+.worst-commit {
+  font-size: 0.8em;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+  font-style: italic;
+}
+
+/* Featured section */
+.featured-section {
+  margin-bottom: 2em;
+}
+
+.featured-section h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+}
+
+.section-divider {
+  margin: 1.5em 0;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(61, 60, 60, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1em;
+}
+
+.modal-content {
+  background-color: #FDF7F1;
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 1.5em;
+  position: relative;
+  border-style: solid;
+  border-width: 10px;
+  border-image: url(/doodle/button.svg) 10 10 10 10 stretch stretch;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.3em;
+  right: 0.5em;
+  background: none !important;
+  border: none !important;
+  border-image: none !important;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #3c3c3c;
+  padding: 0;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #FF5E5B;
+}
+
+/* Modal user header */
+.modal-user-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin-bottom: 1em;
+}
+
+.modal-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none !important;
+}
+
+.modal-user-meta h2 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+.modal-user-meta p {
+  margin: 0.1em 0;
+  font-size: 0.85em;
+  color: #666;
+}
+
+/* Modal verdict */
+.verdict-section {
+  margin: 1em 0;
+  padding: 0.8em;
+  border-left-style: solid;
+  border-width: 0px 6px 3px 6px;
+  border-image: url(/doodle/bq.svg) 0 6 3 6 stretch stretch;
+  border-right-width: 0px;
+}
+
+.verdict-section p {
+  margin: 0;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.verdict-label {
+  font-weight: bold;
+  font-style: normal !important;
+  display: block;
+  margin-bottom: 0.3em;
+  font-size: 0.8em;
+  color: #999;
+}
+
+/* Badges */
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0.8em 0;
+}
+
+.badge-tag {
+  font-size: 0.75em;
+  padding: 0.2em 0.6em;
+  border-style: solid;
+  border-width: 5px;
+  border-image: url(/doodle/button.svg) 5 5 5 5 stretch stretch;
+  white-space: nowrap;
+}
+
+.badge-tag.ai-badge {
+  background-color: #FF5E5B;
+  color: white;
+}
+
+/* Modal stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.stat-box {
+  padding: 0.5em;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-image: url(/doodle/border.svg) 5 5 5 5 stretch stretch;
+}
+
+.stat-value {
+  font-size: 1.4em;
+  font-weight: bold;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.7em;
+  color: #888;
+}
+
+/* Toxicity meter */
+.toxicity-section {
+  margin: 1em 0;
+}
+
+.toxicity-section h4 {
+  margin: 0 0 0.3em 0;
+  font-size: 0.85em;
+}
+
+.toxicity-bar {
+  width: 100%;
+  height: 18px;
+  border-style: solid;
+  border-width: 5px;
+  border-image: url(/doodle/button.svg) 5 5 5 5 stretch stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.toxicity-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.toxicity-low { background-color: #2d8a4e; }
+.toxicity-mid { background-color: #b8860b; }
+.toxicity-high { background-color: #c0392b; }
+
+.toxicity-commit {
+  font-size: 0.8em;
+  font-style: italic;
+  color: #666;
+  margin-top: 0.3em;
+}
+
+/* Re-scrape toast */
+.rescrape-btn {
+  display: block;
+  margin: 1.5em auto;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  font-family: 'Short Stack', cursive;
+  font-size: 0.85em;
+  background-color: transparent;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3c3c3c;
+  color: #FDF7F1;
+  padding: 0.6em 1.2em;
+  font-family: 'Short Stack', cursive;
+  font-size: 0.9em;
+  z-index: 2000;
+  border-radius: 4px;
+  animation: fadeInOut 2.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 3em 1em;
+}
+
+/* Responsive */
+@media only screen and (max-width: 700px) {
+  .scoreboard-table {
+    font-size: 0.75em;
+  }
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  .sus-bar {
+    width: 40px;
+  }
+  .worst-commit {
+    max-width: 120px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

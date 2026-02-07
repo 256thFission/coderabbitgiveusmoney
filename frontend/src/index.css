@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Short Stack', cursive;
+  font-size: 1.1em;
+  background-color: #FDF7F1;
+  color: #3c3c3c;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 0.95em;
+  }
+  #root {
+    padding: 0.5em;
+  }
+}

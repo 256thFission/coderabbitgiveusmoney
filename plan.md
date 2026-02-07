@@ -1,175 +1,216 @@
-This is a high-speed technical specification designed for an 8-hour hackathon. The focus is on a "Linear" pipeline: precompute scrapes, filter, judge, and display.
+# The Wall of Shame — Hackathon Plan (Merged & Final)
 
-Since you are on a clock, avoid complex auth or multi-tenant logic. Use a single flat file or a local SQLite database for speed.
+High-speed spec for an 8-hour hackathon. Pipeline: **precompute → analyze → judge → display**.
+50 "High Value Targets" (HVTs), one repo each, maximum depth.
 
 ---
 
 ## 1. The Stack
 
-* **Backend/Scraper:** Python (fastest for data munging).
-* **Orchestration:** Simple `main.py` script (No Celery/Redis, just loops).
-* **Data Store:** `data.db` (SQLite) or `results.json`.
-* **Frontend:** React + Vite + DoodleCSS (Static site fetching the JSON).
-* **AI:** CodeRabbit API + OpenAI (for the Linus personality layer).
+| Layer | Tool | Notes |
+|---|---|---|
+| **Scraper** | Python 3.12, `requests` | Already built (`precompute.py`). Two-tier: surface then deep. |
+| **Toxicity** | `detoxify` (local) | Runs offline over commit messages. No API cost. |
+| **AI Judge** | [CodeRabbit Custom Reports API](https://docs.coderabbit.ai/guides/custom-reports) | Linus Torvalds persona. One call per HVT repo. |
+| **Data Store** | `scraped_data.db` (SQLite) | Single source of truth. Export to `frontend/public/data.json` for the UI. |
+| **Frontend** | React + Vite + [DoodleCSS](https://chr15m.github.io/DoodleCSS/) | Static site. No live backend. "Scrappy-chic" aesthetic. |
 
 ---
 
-## 2. Phase 0: Precompute All Scraping (Before the Hackathon)
+## 2. Phase 0: Precompute & Deep Scraping (Pre-Hackathon)
 
-The scraping phase is the biggest rate-limit bottleneck. **Do it all ahead of time** so the hackathon hours are spent on the judge + UI.
+**Goal:** Identify 50 HVTs from a larger pool, then deep-scrape their #1 repo.
 
-### 2.1 The Master Username List
+### 2.1 Two-Tier Scraper (`precompute.py` — already exists)
 
-Build a single `usernames.txt` (or `usernames.json`) containing **every** username you want to scrape. This includes:
+**Tier 1 (Surface — already implemented):**
+1. Read `usernames.txt` (judges, organizers, top participants).
+2. Fetch per user: top 10 repos by stars, total stars, follower count, commits last year, bio.
+3. Output: `precomputed.json` (resumable, deduped).
 
-* **Judges** — all hackathon judges' GitHub usernames.
-* **Organizers** — all organizer GitHub usernames.
-* **Participants / Targets** — stargazers of popular repos, followers of famous devs, hackathon attendees, etc.
+**Tier 2 (Deep — needs to be added):**
+1. Rank all scraped users by `stars × commits_last_year`.
+2. Take the **Top 50** as HVTs.
+3. For each HVT's #1 repo (most-starred), fetch:
+   - `README.md` contents (via REST API: `GET /repos/{owner}/{repo}/readme`).
+   - Last **100 commit messages** on the default branch (paginated GraphQL).
+4. Save everything into `scraped_data.db` (SQLite).
 
-Curate this list manually or pull it programmatically (e.g., scrape the hackathon's attendee page, fetch stargazers of `facebook/react`, etc.). Deduplicate before running.
+### 2.2 Auth & Rate Limiting (already implemented)
 
-### 2.2 GitHub Auth — Three-Token Rotation
+Three-token rotation in `.env`. 15,000 req/hr effective. Round-robin with cooldown tracking.
+50 users × ~4 queries each = ~200 queries. Finishes in under a minute.
 
-Unauthenticated GitHub API: 60 requests/hour. Authenticated: **5,000 requests/hour per token**. With three accounts rotating, you get an effective **15,000 requests/hour**.
+### 2.3 `usernames.txt` Format
 
-**Setup:**
+```
+# Judges (tag: judge)
+judge:username1
+judge:username2
 
-1. Create a `.env` file (gitignored) with three GitHub Personal Access Tokens:
-   ```
-   GITHUB_TOKENS=ghp_token1,ghp_token2,ghp_token3
-   ```
-2. In the scraper, load the tokens and rotate with a simple round-robin:
-   ```python
-   import os, itertools
+# Organizers (tag: organizer)
+org:username3
 
-   tokens = os.environ["GITHUB_TOKENS"].split(",")
-   token_cycle = itertools.cycle(tokens)
-
-   def get_next_headers():
-       token = next(token_cycle)
-       return {"Authorization": f"bearer {token}"}
-   ```
-3. On each API call, use `get_next_headers()`. This spreads load across three accounts evenly.
-4. **Rate-limit awareness:** After each response, check `X-RateLimit-Remaining`. If a token is exhausted, skip it until `X-RateLimit-Reset`. A simple approach:
-   ```python
-   import time
-
-   token_cooldowns = {}  # token -> reset_timestamp
-
-   def get_next_headers():
-       now = time.time()
-       for _ in range(len(tokens)):
-           token = next(token_cycle)
-           if token_cooldowns.get(token, 0) <= now:
-               return {"Authorization": f"bearer {token}"}
-       # All tokens exhausted — sleep until the earliest reset
-       earliest = min(token_cooldowns.values())
-       time.sleep(max(0, earliest - now + 1))
-       return get_next_headers()
-   ```
-
-### 2.3 The Precompute Script (`precompute.py`)
-
-This script runs **before** the hackathon. It reads `usernames.txt`, scrapes all data via the GitHub GraphQL API, and dumps results to `precomputed.json` (or SQLite).
-
-**Per-user data to fetch (single GraphQL query):**
-
-* Top 10 repos by stars (name, stargazerCount, primaryLanguage, description).
-* Total star count across all repos.
-* Contribution count for the last year.
-* Last 50 commit messages (for emoji scoring).
-* Bio, company, location, followers count.
-
-**Resumability:** The script should skip usernames that are already in the output file. This way if it crashes or you hit a long cooldown, you just re-run it and it picks up where it left off.
-
-**Output format (`precomputed.json`):**
-```json
-{
-  "torvalds": {
-    "stars": 200000,
-    "commits_last_year": 3200,
-    "emoji_score": 0,
-    "top_repos": ["linux"],
-    "bio": "...",
-    "scraped_at": "2026-02-07T..."
-  }
-}
+# Participants (no tag needed)
+username4
+username5
 ```
 
-### 2.4 Timing Estimate
-
-* ~2 GraphQL queries per user (profile + commits).
-* 15,000 req/hr with 3 tokens → ~7,500 users/hr.
-* For a list of 1,000 usernames, this finishes in under 10 minutes.
-* For 10,000 usernames, ~1.5 hours. Run it the night before.
+Parse the prefix to tag roles in the DB. Simple `split(":")` logic.
 
 ---
 
-## 3. Phase 1: The Judge (Hours 0-3)
+## 3. Phase 1: Toxicity & Sus Analysis (Hours 0–1)
 
-With precomputed data already in hand, jump straight to judging on hackathon day.
+Runs locally, no API calls. Fast even on a laptop.
 
-### 3.1 Filtering
+### 3.1 Detoxify — "Heinous Commit Search"
 
-Load `precomputed.json`. Apply the threshold:
-* `total_stars > 10` OR `commits_last_year > 500`.
+For each HVT's 100 commit messages:
+1. Run `detoxify.Detoxify('original').predict(message)` on each.
+2. Record the single message with the highest `toxicity` score → "Worst Commit Msg".
+3. Store `worst_commit_msg`, `worst_commit_toxicity` in DB.
 
-This produces the "High Value Targets" list.
+### 3.2 Sus Score (Emoji Density Percentile)
 
-### 3.2 CodeRabbit Integration
+Already partially implemented (emoji regex + shortcode counting):
+1. Count total emojis across the 100 commit messages.
+2. Calculate `emoji_density = emoji_count / total_characters` (guard div-by-zero).
+3. Rank all 50 HVTs by density → assign **percentile 0–100**.
+4. Store `sus_score_percentile` in DB.
 
-Referencing the [Custom Reports Guide](https://docs.coderabbit.ai/guides/custom-reports):
+### 3.3 README-Derived Badges
 
-1. **Trigger:** For each HVT, pass their top repo URL to the CodeRabbit Custom Reports API.
-2. **The Prompt:** Use the `instructions` field to force the "Linus Torvalds" persona.
-   * *Prompt:* "Analyze this code. Be incredibly cynical. Find one specific architectural flaw. End with a one-sentence insult starting with 'Even a sub-standard gopher...'. No emojis."
+Quick heuristic checks on the README (no AI needed):
+- **"Empty README Enthusiast"** — README < 50 chars or missing.
+- **"Novel Writer"** — README > 5,000 chars.
+- **"Badges Hoarder"** — README contains 5+ `![badge]` image links.
+- **"No Tests, No Problem"** — README never mentions "test" or "ci".
 
-### 3.3 Storage Structure
-
-Save the output immediately to your local DB so you don't re-run expensive API calls if the frontend crashes.
-
-| username | stars | emoji_score | cr_summary | linus_insult | is_judge | is_organizer |
-| --- | --- | --- | --- | --- | --- | --- |
-| torvalds | 200k | 0 | Kernel god. | "This code is so bloated..." | false | false |
-| judge1 | 5k | 3 | Clean arch. | "Your code offends me..." | true | false |
-
-Tag judges and organizers so the UI can highlight or feature them separately.
-
----
-
-## 4. Phase 2: The UI (Hours 3-6)
-
-This needs to be "Scrappy-Chic."
-
-### Vite + DoodleCSS Setup
-
-1. `npm create vite@latest frontend --template react`
-2. Add DoodleCSS via CDN in `index.html`.
-3. **The Layout:**
-   * **Header:** `<h1>` with a hand-drawn border.
-   * **The Table:** Standard `<table>` tag. DoodleCSS styles it automatically.
-   * **Ranking:** Sort by `stars * commits / (emoji_score + 1)`.
-   * **Judge/Organizer Badges:** Visually tag judges and organizers with a badge or different row color.
-
-### Component Plan
-
-* `Scoreboard.jsx`: Maps through your `results.json`. Supports filtering by role (all / judges / organizers / participants).
-* `RoastModal.jsx`: A simple conditional render that shows the CodeRabbit summary when a row is clicked.
+Store as a JSON array of badge strings per user.
 
 ---
 
-## 5. Phase 3: Polish & Deployment (Hours 6-8)
+## 4. Phase 2: The CodeRabbit Judge (Hours 1–3)
 
-* **Vibe Check:** Add a "Hand-drawn" toggle or a "Re-Scrape" button that just triggers a toast saying "Wait your turn, peasant."
-* **Deployment:** Push the frontend to Vercel or Netlify. Host `results.json` as a static file in `/public` — no live backend needed.
+### 4.1 Custom Report Trigger
+
+For each HVT's top repo, call the CodeRabbit Custom Reports API with:
+
+> **Instructions:** "Act as Linus Torvalds. Analyze the README and architecture of this repo.
+> 1. Provide a 'Code Quality Grade' from F- to A+.
+> 2. Write a savage, technical one-liner roast (the 'Verdict').
+> 3. Identify one 'Badge' they deserve (e.g., Over-engineered, Bloated, Documentation Hater).
+> 4. Strictly no emojis."
+
+### 4.2 Response Parsing & Cache
+
+Save the raw CodeRabbit JSON to SQLite immediately. Parse out:
+- `quality_grade` (string: "F-" to "A+")
+- `verdict` (string: the one-liner roast)
+- `coderabbit_badge` (string: the AI-assigned badge)
+
+If CodeRabbit is slow or flaky, the rest of the pipeline still works — the UI just shows "Pending review…" for ungraded users.
+
+---
+
+## 5. Phase 3: The UI (Hours 3–6)
+
+### 5.1 Setup
+
+```bash
+npm create vite@latest frontend -- --template react
+# Add DoodleCSS via CDN in index.html
+```
+
+### 5.2 The "Wall of Shame" Table (`Scoreboard.jsx`)
+
+**Ranking formula:** `(stars × commits) / (sus_score_percentile + 1)`
+
+| Column | Source |
+|---|---|
+| **Rank** | Computed from formula above |
+| **Name** | Avatar + GitHub handle. "Judge" / "Organizer" tag if applicable. |
+| **Quality Grade** | CodeRabbit letter grade (e.g., **D-**) |
+| **Sus Score** | Percentile, shown as a hand-drawn progress bar |
+| **Worst Commit** | The Detoxify-flagged message, truncated |
+
+**Filters:** Tabs or buttons for All / Judges / Organizers / Participants.
+
+### 5.3 The Details Modal (`RoastModal.jsx`)
+
+Click a row → `doodle-border` modal:
+- **The Verdict:** Full Linus one-liner from CodeRabbit.
+- **Badges:** Visual stickers — both heuristic badges + CodeRabbit badge.
+- **Top Repo Stats:** Star count, primary language, worst commit message in full.
+- **Toxicity Meter:** Visual bar for the worst commit's toxicity score.
+
+### 5.4 Featured Judges Section
+
+**Yes** — pin judges/organizers at the top in a highlighted "Featured" row group.
+People grading you see themselves first. High visibility = high impact.
+
+---
+
+## 6. Phase 4: Polish & Deploy (Hours 6–8)
+
+1. **Export:** Python script runs `generate_data_json()` → writes `frontend/public/data.json`.
+2. **Deploy:** `npm run build` → Netlify or Vercel. Static site, no backend needed.
+3. **Vibes:**
+   - "Re-Scrape" button → toast: "Wait your turn, peasant."
+   - Doodle-style loading skeletons.
+   - Dark/light toggle if time permits.
+
+---
+
+## Design Decisions (Hackathon Pragmatism)
+
+| Question | Decision | Rationale |
+|---|---|---|
+| **50 vs. more targets?** | **50 is correct.** | Deep > wide. 100 commits × 50 people = rich data. More targets = shallower analysis. |
+| **100 commits enough?** | **Yes.** | At 50 people, 100 commits is plenty for toxicity signal. Diminishing returns past that. |
+| **Detoxify vs. API sentiment?** | **Detoxify (local).** | Zero latency, no API key, runs on CPU in seconds for 5,000 messages. |
+| **SQLite vs. JSON?** | **SQLite for pipeline, JSON for UI.** | SQLite prevents data loss mid-pipeline. JSON is the static export the frontend reads. |
+| **`gql` library?** | **Skip it.** | `requests` + raw GraphQL strings already works in `precompute.py`. No reason to add a dep. |
+| **Featured Judges section?** | **Yes.** | Judges see themselves first → memorable → better score for us. |
+| **Backend API?** | **No.** | Python overwrites `data.json`. React reads it with `fetch()`. Zero server infra. |
 
 ---
 
 ## The "Hack" List (Time Savers)
 
-* **Precompute everything:** All GitHub scraping is done before the hackathon. Zero API wait time on the day.
-* **Three-token rotation:** 15k req/hr instead of 5k. Set it up once, forget about it.
-* **Don't build a backend API:** Just have your Python script overwrite `frontend/public/data.json`. React fetches it with `useEffect`.
-* **Hardcode the Threshold:** Don't make it adjustable. Pick a number and move on.
-* **Ignore Error Handling:** If a GitHub profile 404s, just `continue` the loop.
-* **Resumable scraper:** If it crashes, re-run and it skips already-scraped users.
+- **Precompute everything:** All GitHub scraping done before the hackathon. Zero API wait on day-of.
+- **Three-token rotation:** 15k req/hr. Set it up once, forget it.
+- **No backend API:** Python writes `data.json` → React reads it. Done.
+- **Hardcode the threshold:** Top 50 by `stars × commits`. No UI knob needed.
+- **Ignore error handling:** If a profile 404s, `continue`. If CodeRabbit times out, show "Pending".
+- **Resumable everything:** Scraper skips already-scraped users. Judge skips already-judged repos.
+- *dges are free:** README heuristics take 10 lines of Python and add huge visual value.*Ba
+
+---
+
+## File Structure (Target)
+
+```
+├── .env                    # GitHub tokens (gitignored)
+├── .env.example
+├── usernames.txt           # Input: one username per line, with optional role prefix
+├── precompute.py           # Tier 1 + Tier 2 scraper (already exists, needs Tier 2)
+├── analyze.py              # Detoxify toxicity + sus score + README badges
+├── judge.py                # CodeRabbit API calls + response parsing
+├── export.py               # SQLite → data.json for the frontend
+├── scraped_data.db         # SQLite (gitignored)
+├── environment.yml         # Conda deps
+├── frontend/
+│   ├── public/
+│   │   └── data.json       # Generated by export.py
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── Scoreboard.jsx
+│   │   ├── RoastModal.jsx
+│   │   └── main.jsx
+│   ├── index.html          # DoodleCSS CDN link here
+│   ├── package.json
+│   └── vite.config.js
+└── plan.md                 # This file
+```
