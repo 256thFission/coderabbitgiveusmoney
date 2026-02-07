@@ -1,4 +1,18 @@
 # One GitHub username per line
 # Lines starting with # are ignored
 # Example:
-256thfission
+BruceMcRooster
+ap-1
+BruceMcRooster
+chloe-yan
+cirex-web
+laasyaaki
+tsurbs
+xavilien
+GhostOf0days
+maelleallanic
+Yuxiang-Huang
+hanabenko
+SnowballSH
+adityamittal13
+SunfishTK1

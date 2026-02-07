@@ -33,10 +33,6 @@ function App() {
     Participants: 'participant',
   }
 
-  const featured = data
-    ? data.filter(u => u.role === 'judge' || u.role === 'organizer')
-    : []
-
   const filtered = data
     ? filterRole[filter]
       ? data.filter(u => u.role === filterRole[filter])
@@ -44,7 +40,7 @@ function App() {
     : []
 
   function handleRescrape() {
-    setToast('Wait your turn, peasant.')
+    setToast('Wait your turn. It\'s a static site :p')
     setTimeout(() => setToast(null), 2500)
   }
 
@@ -59,19 +55,6 @@ function App() {
         <h1>The Wall of Shame</h1>
         <p className="subtitle">A totally fair and unbiased code review</p>
       </header>
-
-      {/* Featured Judges & Organizers */}
-      {featured.length > 0 && (
-        <section className="featured-section">
-          <h2>* Featured: Judges & Organizers *</h2>
-          <Scoreboard
-            users={featured}
-            onSelect={setSelected}
-          />
-        </section>
-      )}
-
-      <hr className="section-divider" />
 
       {/* Filter bar */}
       <div className="filter-bar">
