@@ -402,76 +402,76 @@
     "raw_response": "<!-- This is an auto-generated reply by CodeRabbit -->\n> [!TIP]\n> For best results, initiate chat on the files or code changes.\n\n<details>\n<summary>\ud83e\udde9 Analysis chain</summary>\n\n`@256thFission`, let me analyze the entire repository to provide a proper technical roast.\n\n---\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n\n# Get repository structure\necho \"=== REPOSITORY STRUCTURE ===\"\ntree -L 3 -a -I '.git'\n\necho -e \"\\n=== FILE COUNT BY TYPE ===\"\nfd -t f | wc -l\necho \"Total files\"\n\necho -e \"\\n=== PACKAGE.JSON (if exists) ===\"\nif [ -f \"package.json\" ]; then\n  cat package.json\nfi\n\necho -e \"\\n=== CARGO.TOML (if exists) ===\"\nif [ -f \"Cargo.toml\" ]; then\n  cat Cargo.toml\nfi\n\necho -e \"\\n=== PYPROJECT.TOML (if exists) ===\"\nif [ -f \"pyproject.toml\" ]; then\n  cat pyproject.toml\nfi\n\necho -e \"\\n=== GO.MOD (if exists) ===\"\nif [ -f \"go.mod\" ]; then\n  cat go.mod\nfi\n\necho -e \"\\n=== README ===\"\nfd -t f -e md -e txt | grep -i readme | head -1 | xargs cat 2>/dev/null || echo \"No README found\"\n\necho -e \"\\n=== MAIN SOURCE FILES ===\"\nfd -e rs -e py -e js -e ts -e go -e java | head -20\n```\n\nLength of output: 1086\n\n---\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n\necho \"=== SETUP.PY (dependencies) ===\"\ncat setup.py\n\necho -e \"\\n=== MAIN MODULE: periodic_table.py ===\"\ncat periodic_table_tui/periodic_table.py\n\necho -e \"\\n=== __init__.py ===\"\ncat periodic_table_tui/__init__.py\n\necho -e \"\\n=== __main__.py ===\"\ncat periodic_table_tui/__main__.py\n\necho -e \"\\n=== LOOKING FOR TESTS ===\"\nfd -t d -i test\nfd -t f -i test\necho \"Test file count:\"\nfd -t f -i test | wc -l\n\necho -e \"\\n=== LINE COUNTS ===\"\ntokei\n\necho -e \"\\n=== CHECKING FOR TODO/FIXME ===\"\nrg -i \"TODO|FIXME|XXX|HACK\" || echo \"No TODOs found\"\n\necho -e \"\\n=== CHECKING FOR PROPER ERROR HANDLING ===\"\nrg \"try:\" periodic_table_tui/ -A 2 | head -30\n```\n\nLength of output: 16320\n\n---\n\n\n\n</details>\n\n`@256thFission`, I've analyzed the entire repository. Here's your technical evaluation:\n\n```json\n{\n  \"grade\": \"C+\",\n  \"verdict\": \"Bare `except:` at line 265 swallows KeyboardInterrupt, another at 285 silently fails. Zero tests. 400-line god class with vars like `z`, `i`, `l`, `s`, `m`. That `# e` comment in __init__.py? Chef's kiss.\",\n  \"badge\": \"Exception Swallower Extraordinaire\"\n}\n```\n\n**Technical breakdown:**\n\n1. **Error handling is a disaster**: Line 265's `except:` catches *everything* including `KeyboardInterrupt`, then line 266 has another bare `except:` in the same handler. Line 285 has `except: pass` that silently swallows all errors when rendering density. This is exactly how you create impossible-to-debug race conditions.\n\n2. **Zero tests**: Not a single test file. Your 400-line table generation logic with coordinate math? Untested. Navigation? Untested. Element lookup? Untested.\n\n3. **Variable naming nightmare**: Methods like `get_surrounding_elements()` use `z`, `i`, `j`, `a`, `l`, `m`, `p`, `q1-q4`, `r`, `s` - it's unreadable. Same in `generate_table()` and `get_corner_piece()`.\n\n4. **400-line god class**: `PeriodicTable` does everything - data management, UI rendering, input handling, table generation. No separation of concerns whatsoever.\n\n5. **Documentation**: Zero docstrings. Zero comments explaining the complex table generation algorithm. Just that mysterious `# e` in `__init__.py` - what is that, a failed attempt at humor?\n\n**What doesn't suck:** Minimal dependencies (stdlib only), works as intended, proper entry point setup, has a README and LICENSE.\n\n**Verdict**: This is C+ territory - functional but riddled with code smell. It works, I'll give you that. But the bare excepts alone should haunt your dreams."
   },
   "IndyaG": {
-    "fork_name": "256thFission/cmucourses",
+    "fork_name": "HalShami/cmucourses",
     "repo_name": "cmucourses",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:02.828245+00:00"
+    "comment_time": "2026-02-07T21:33:06.401386+00:00"
   },
   "dkhalifa25": {
-    "fork_name": "256thFission/cmucourses",
+    "fork_name": "HalShami/cmucourses",
     "repo_name": "cmucourses",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:06.841873+00:00"
+    "comment_time": "2026-02-07T21:33:10.481577+00:00"
   },
   "Akulxsharma": {
-    "fork_name": "256thFission/Juny",
+    "fork_name": "HalShami/Juny",
     "repo_name": "Juny",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:10.942882+00:00"
+    "comment_time": "2026-02-07T21:33:14.796509+00:00"
   },
   "mkhisty": {
-    "fork_name": "256thFission/zap",
+    "fork_name": "HalShami/zap",
     "repo_name": "zap",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:15.154200+00:00"
+    "comment_time": "2026-02-07T21:33:19.335643+00:00"
   },
   "Ykalani": {
-    "fork_name": "256thFission/movie-rec",
+    "fork_name": "HalShami/movie-rec",
     "repo_name": "movie-rec",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:19.224288+00:00"
+    "comment_time": "2026-02-07T21:33:23.444326+00:00"
   },
   "shane-thoma": {
-    "fork_name": "256thFission/student-assistant",
+    "fork_name": "HalShami/student-assistant",
     "repo_name": "student-assistant",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:23.331742+00:00"
+    "comment_time": "2026-02-07T21:33:27.888552+00:00"
   },
   "Harikeshav-R": {
-    "fork_name": "256thFission/mazdoor-sahay",
+    "fork_name": "HalShami/mazdoor-sahay",
     "repo_name": "mazdoor-sahay",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:27.477451+00:00"
+    "comment_time": "2026-02-07T21:33:32.790374+00:00"
   },
   "Ellylai": {
-    "fork_name": "256thFission/twa",
+    "fork_name": "HalShami/twa",
     "repo_name": "twa",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:31.703291+00:00"
+    "comment_time": "2026-02-07T21:33:36.787914+00:00"
   },
   "ChiranshuDoshi": {
-    "fork_name": "256thFission/MonteCarloOptionPricer",
+    "fork_name": "HalShami/MonteCarloOptionPricer",
     "repo_name": "MonteCarloOptionPricer",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:35.870736+00:00"
+    "comment_time": "2026-02-07T21:33:40.999468+00:00"
   },
   "Rx-11": {
     "fork_name": "256thFission/ticketing",
@@ -489,64 +489,64 @@
     "raw_response": "<!-- This is an auto-generated reply by CodeRabbit -->\n> [!TIP]\n> For best results, initiate chat on the files or code changes.\n\n<details>\n<summary>\ud83e\udde9 Analysis chain</summary>\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n# First, let's see the overall structure\necho \"=== Repository Structure ===\"\ntree -L 3 -I 'node_modules|.git|dist|build|__pycache__|*.pyc' || find . -type f -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/dist/*' -not -path '*/build/*' | head -50\n\necho -e \"\\n=== File Count by Type ===\"\nfd -e py -e js -e ts -e tsx -e jsx -e go -e java -e rs | wc -l\n\necho -e \"\\n=== Checking for Tests ===\"\nfd -e py -e js -e ts test || fd -e py -e js -e ts spec || echo \"No test files found\"\n\necho -e \"\\n=== Checking for README ===\"\nfd -i readme\n\necho -e \"\\n=== Checking for Dependencies ===\"\nfd package.json requirements.txt Cargo.toml go.mod pom.xml build.gradle\n```\n\nLength of output: 1321\n\n---\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n# Read key files for analysis\necho \"=== README.md ===\"\ncat README.md\n\necho -e \"\\n=== package.json ===\"\ncat package.json\n\necho -e \"\\n=== Checking for .env or config files ===\"\nfd -H -e env -e config.js -e config.ts -e config.json | head -10\n\necho -e \"\\n=== Count dependencies ===\"\ncat package.json | jq '.dependencies | length'\ncat package.json | jq '.devDependencies | length'\n```\n\nLength of output: 2211\n\n---\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n# Let's examine the core application code\necho \"=== Main Page ===\"\ncat app/page.tsx\n\necho -e \"\\n=== Marketplace Client ===\"\ncat app/marketplace/MarketplaceClient.tsx\n\necho -e \"\\n=== API Routes - Tickets ===\"\nfind app/api/tickets -type f -name \"*.ts\" -o -name \"*.tsx\" | head -5 | xargs -I {} sh -c 'echo \"=== {} ===\" && cat {}'\n\necho -e \"\\n=== API Routes - Queue ===\"\nfind app/api/queue -type f -name \"*.ts\" -o -name \"*.tsx\" | head -3 | xargs -I {} sh -c 'echo \"=== {} ===\" && cat {}'\n```\n\nLength of output: 13093\n\n---\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n# Examine the core library files\necho \"=== memoryDb.ts ===\"\ncat lib/memoryDb.ts\n\necho -e \"\\n=== xrplSrv.ts ===\"\ncat lib/xrplSrv.ts\n\necho -e \"\\n=== events.ts ===\"\ncat lib/events.ts\n\necho -e \"\\n=== crypto.ts ===\"\ncat lib/crypto.ts\n\necho -e \"\\n=== hash.ts ===\"\ncat lib/hash.ts\n\necho -e \"\\n=== Check for error boundaries or global error handling ===\"\nrg -n \"ErrorBoundary|componentDidCatch|error.tsx|error.ts\" --type=ts --type=tsx || echo \"No error boundaries found\"\n\necho -e \"\\n=== Check for any tests ===\"\nrg -n \"describe|it\\(|test\\(|expect\\(\" --type=ts --type=tsx || echo \"No tests found\"\n\necho -e \"\\n=== Check for TODO/FIXME comments ===\"\nrg -n \"TODO|FIXME|HACK|XXX\" --type=ts --type=tsx || echo \"No TODOs found\"\n```\n\nLength of output: 10143\n\n---\n\n\ud83c\udfc1 Script executed:\n```\n#!/bin/bash\n# Check what's actually in those SQLite dependencies and if they're used\necho \"=== Checking SQLite usage ===\"\nrg -n \"better-sqlite|sqlite3\" --type=ts --type=js || echo \"No SQLite imports found in code\"\n\necho -e \"\\n=== Check crypto.ts file size ===\"\nwc -l lib/crypto.ts\n\necho -e \"\\n=== Check for environment variable usage ===\"\nrg -n \"process\\.env\" --type=ts --type=tsx -A1 -B1 | head -40\n\necho -e \"\\n=== Check for proper TypeScript types vs 'any' ===\"\nrg -n \": any|as any\" --type=ts | wc -l\n\necho -e \"\\n=== Examine one more API file - score ===\"\nfind app/api/score -type f -name \"*.ts\" 2>/dev/null | head -1 | xargs cat || echo \"No score API\"\n\necho -e \"\\n=== Check scripts folder ===\"\nls -la scripts/\ncat scripts/verify_xrpl.ts 2>/dev/null || echo \"Could not read verify_xrpl.ts\"\n```\n\nLength of output: 2068\n\n---\n\n\n\n</details>\n\n`@256thFission`\n\nAlright, let's see what we have here. I've analyzed every file in this repository.\n\n```json\n{\n  \"grade\": \"D+\",\n  \"verdict\": \"Empty crypto.ts, two unused SQLite deps taking up space, in-memory DB that loses everything on restart, zero tests, and your score function checks if wallets end with 'A'.\",\n  \"badge\": \"Dependency Window Shopper\"\n}\n```\n\n**What's actually wrong here:**\n\nYour `lib/crypto.ts` is completely empty\u2014zero lines. You created it and forgot about it. Then you added **both** `better-sqlite3` **and** `sqlite3` to dependencies but never imported either one anywhere. That's like buying two cars and taking the bus.\n\nThe \"database\" is `globalThis.__fenDb`\u2014an in-memory object that vanishes the moment the server restarts. Every ticket, every commitment, gone. For a ticketing system. Brilliant.\n\nYour README is still the untouched `create-next-app` template. You couldn't spend 30 seconds writing what this actually does.\n\nYou have **zero tests**. Not even a smoke test. Not a single `describe` block. Your quality assurance strategy is \"it worked on my machine once.\"\n\nThe mock reputation score in `app/api/score/route.ts` returns 80 if a wallet address ends with the letter 'A'. I'm sure that's exactly how reputation systems work in production.\n\nYou're using TypeScript but bypass it with `any` 20 times. At that point, just write JavaScript.\n\n**What doesn't suck:**\n\nThe XRPL integration code is reasonably structured. API routes follow Next.js conventions. The commit-reveal scheme for queue fairness shows you understand the problem domain. File organization is coherent enough.\n\nThis is clearly a hackathon MVP, and for that context, fine\u2014it probably demos okay. But the gap between \"works for a demo\" and \"should exist in a repository\" is filled with unused dependencies, empty files, and vaporware persistence.\n\nClean up the deps, write actual docs, add a real database, and for the love of all that is holy, write some tests."
   },
   "mohitk24": {
-    "fork_name": "256thFission/humanitarian-funding-efficiency-datathon-2026",
+    "fork_name": "HalShami/humanitarian-funding-efficiency-datathon-2026",
     "repo_name": "humanitarian-funding-efficiency-datathon-2026",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:44.085892+00:00"
+    "comment_time": "2026-02-07T21:33:45.097047+00:00"
   },
   "Junsouh": {
-    "fork_name": "256thFission/governance",
+    "fork_name": "HalShami/governance",
     "repo_name": "governance",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:48.334981+00:00"
+    "comment_time": "2026-02-07T21:33:49.291898+00:00"
   },
   "Jtsiv1": {
-    "fork_name": "256thFission/quadratic_teaching_resource_01-2022",
+    "fork_name": "HalShami/quadratic_teaching_resource_01-2022",
     "repo_name": "quadratic_teaching_resource_01-2022",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:52.475519+00:00"
+    "comment_time": "2026-02-07T21:33:53.693119+00:00"
   },
   "sru1105": {
     "fork_name": "256thFission/FaceTheBeat",
     "repo_name": "FaceTheBeat"
   },
   "VarunShelke": {
-    "fork_name": "256thFission/smart-attendance-tracker",
+    "fork_name": "HalShami/smart-attendance-tracker",
     "repo_name": "smart-attendance-tracker",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:48:57.492275+00:00"
+    "comment_time": "2026-02-07T21:33:57.982015+00:00"
   },
   "akshatsabavat": {
-    "fork_name": "256thFission/Rocketsearch.io",
+    "fork_name": "HalShami/Rocketsearch.io",
     "repo_name": "Rocketsearch.io",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:49:01.682007+00:00"
+    "comment_time": "2026-02-07T21:34:02.234301+00:00"
   },
   "Ronak-mahajan": {
-    "fork_name": "256thFission/options-dashboard",
+    "fork_name": "HalShami/options-dashboard",
     "repo_name": "options-dashboard",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:49:05.765465+00:00"
+    "comment_time": "2026-02-07T21:34:06.469803+00:00"
   },
   "wiz002-ucsd": {
-    "fork_name": "256thFission/lumaa-spring-2025-swe",
+    "fork_name": "HalShami/lumaa-spring-2025-swe",
     "repo_name": "lumaa-spring-2025-swe",
     "pr_number": 1,
     "default_branch": "main",
     "comment_posted": true,
-    "comment_time": "2026-02-07T20:49:10.003700+00:00"
+    "comment_time": "2026-02-07T21:34:10.808883+00:00"
   },
   "SwetaleenaGuha": {
     "fork_name": "256thFission/viz-recommendation-task",

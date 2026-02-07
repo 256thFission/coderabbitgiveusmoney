@@ -21,26 +21,12 @@
   border: none !important;
 }
 
-/* Filter Tabs */
-.filter-bar {
-  display: flex;
-  gap: 0.5em;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1.5em;
-}
-
-.filter-bar button {
-  padding: 0.3em 0.8em;
-  cursor: pointer;
-  font-family: 'Short Stack', cursive;
+/* Made with love blurb */
+.made-with-love {
+  text-align: center;
   font-size: 0.85em;
-  background-color: transparent;
-}
-
-.filter-bar button.active {
-  background-color: #FF5E5B;
-  color: white;
+  color: #999;
+  margin-bottom: 1.5em;
 }
 
 /* Scoreboard Table */

@@ -3,15 +3,12 @@ import './App.css'
 import Scoreboard from './Scoreboard.jsx'
 import RoastModal from './RoastModal.jsx'
 
-const FILTERS = ['All', 'Judges', 'Organizers', 'Participants']
-
 function rankScore(user) {
   return (user.stars * user.commits_last_year) / (user.sus_score_percentile + 1)
 }
 
 function App() {
   const [data, setData] = useState(null)
-  const [filter, setFilter] = useState('All')
   const [selected, setSelected] = useState(null)
   const [toast, setToast] = useState(null)
 
@@ -25,19 +22,6 @@ function App() {
         setData(ranked)
       })
   }, [])
-
-  const filterRole = {
-    All: null,
-    Judges: 'judge',
-    Organizers: 'organizer',
-    Participants: 'participant',
-  }
-
-  const filtered = data
-    ? filterRole[filter]
-      ? data.filter(u => u.role === filterRole[filter])
-      : data
-    : []
 
   function handleRescrape() {
     setToast('Wait your turn. It\'s a static site :p')
@@ -56,22 +40,11 @@ function App() {
         <p className="subtitle">A totally fair and unbiased code review</p>
       </header>
 
-      {/* Filter bar */}
-      <div className="filter-bar">
-        {FILTERS.map(f => (
-          <button
-            key={f}
-            className={filter === f ? 'active' : ''}
-            onClick={() => setFilter(f)}
-          >
-            {f}
-          </button>
-        ))}
-      </div>
+      <p className="made-with-love">Made with love and spite by Phillip, Zackery and Hummam</p>
 
       {/* Main scoreboard */}
       <Scoreboard
-        users={filtered}
+        users={data}
         onSelect={setSelected}
       />
 
