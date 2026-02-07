@@ -71,6 +71,7 @@ export default function Scoreboard({ users, onSelect }) {
       <thead>
         <tr>
           <th>#</th>
+          <th>Username</th>
           <th>Name</th>
           <th className="sortable-th" onClick={() => handleSort('stars')}>
             Stars<SortArrow column="stars" sortBy={sortBy} sortDir={sortDir} />
@@ -110,6 +111,7 @@ export default function Scoreboard({ users, onSelect }) {
                   </div>
                 </div>
               </td>
+              <td>{user.name || '—'}</td>
               <td>
                 <div className="stars-cell">
                   <img src="/doodle/star.svg" alt="" className="star-inline" />

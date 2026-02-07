@@ -1,0 +1,221 @@
+Wall of Shame — CodeRabbit Judge Pipeline
+Users: 48  |  Token: ADMIN  |  Phase: all
+
+============================================================
+PHASE 1: FORKING REPOS (as 256thFission)
+============================================================
+  [BruceMcRooster] Forking BruceMcRooster/PromKit… → 256thFission/PromKit
+  [ap-1] Forking ap-1/balladeer… → 256thFission/balladeer
+  [chloe-yan] Forking chloe-yan/network… → 256thFission/network
+  [cirex-web] Forking cirex-web/02261-lab-3… → 256thFission/02261-lab-3
+  [laasyaaki] Forking laasyaaki/scottylabs.org… → 256thFission/scottylabs.org
+  [tsurbs] Forking tsurbs/StravAnalysis… → 256thFission/StravAnalysis
+  [xavilien] Forking xavilien/convex-telegram… → 256thFission/convex-telegram
+  [GhostOf0days] Forking GhostOf0days/Reddit-Data-Scraper… → 256thFission/Reddit-Data-Scraper
+  [maelleallanic] Forking maelleallanic/scottylabs.org… → 256thFission/scottylabs.org
+  [Yuxiang-Huang] Forking Yuxiang-Huang/Piece-By-Piece… → 256thFission/Piece-By-Piece
+  [hanabenko] Forking hanabenko/gwc-humanizeai-final-git… → 256thFission/gwc-humanizeai-final-git
+  [SnowballSH] Forking SnowballSH/Avalanche… → 256thFission/Avalanche
+  [adityamittal13] Forking adityamittal13/MR_Infectious_Diseases… → 256thFission/MR_Infectious_Diseases
+  [SunfishTK1] Forking SunfishTK1/graphly… → 256thFission/graphly
+  [256thfission] Forking 256thfission/TMA-Segmentation-Crop… → 256thFission/TMA-Segmentation-Crop
+  [knaoinr] Forking knaoinr/shiny-plugin… → 256thFission/shiny-plugin
+  [icyviolet23] Forking icyviolet23/UChicagoTrading… → 256thFission/UChicagoTrading
+  [btwj] Forking btwj/tree-sitter-virgil… → 256thFission/tree-sitter-virgil
+  [anudaweerasinghe] Forking anudaweerasinghe/govi-mithuru-ai… → 256thFission/govi-mithuru-ai
+  [luca-borletti] Forking luca-borletti/engage-ai… → 256thFission/engage-ai
+  [mgmgperson] Forking mgmgperson/pokemon-manager… → 256thFission/pokemon-manager
+  [porkboi] Forking porkboi/docs… → 256thFission/docs-1
+  [lynzhlang] Forking lynzhlang/nodebb-theme-harmony-bearries… → 256thFission/nodebb-theme-harmony-bearries
+  [Lhwhatever] Forking Lhwhatever/cmrc-microcontroller-2021… → 256thFission/cmrc-microcontroller-2021
+  [aattiyah] Forking aattiyah/basic-web-app-f24… → 256thFission/basic-web-app-f24
+  [HeidiTao] Forking HeidiTao/basic-web-app… → 256thFission/basic-web-app-f24
+  [joharkhan99] Forking joharkhan99/TextifyImage… → 256thFission/TextifyImage
+  [jhtl99] Forking jhtl99/PRogue… → 256thFission/PRogue
+  [wlmchen] Forking wlmchen/periodic-table-tui… → 256thFission/periodic-table-tui
+  [IndyaG] Forking IndyaG/cmucourses… → 256thFission/cmucourses
+  [dkhalifa25] Forking dkhalifa25/cmucourses… → 256thFission/cmucourses
+  [Akulxsharma] Forking Akulxsharma/Juny… → 256thFission/Juny
+  [mkhisty] Forking mkhisty/zap… → 256thFission/zap
+  [Ykalani] Forking Ykalani/movie-rec… → 256thFission/movie-rec
+  [shane-thoma] Forking shane-thoma/student-assistant… → 256thFission/student-assistant
+  [Harikeshav-R] Forking Harikeshav-R/mazdoor-sahay… → 256thFission/mazdoor-sahay
+  [Ellylai] Forking Ellylai/twa… → 256thFission/twa
+  [ChiranshuDoshi] Forking ChiranshuDoshi/MonteCarloOptionPricer… → 256thFission/MonteCarloOptionPricer
+  [Rx-11] Forking Rx-11/ticketing… → 256thFission/ticketing
+  [mohitk24] Forking mohitk24/humanitarian-funding-efficiency-datathon-2026… → 256thFission/humanitarian-funding-efficiency-datathon-2026
+  [Junsouh] Forking Junsouh/governance… → 256thFission/governance
+  [Jtsiv1] Forking Jtsiv1/quadratic_teaching_resource_01-2022… → 256thFission/quadratic_teaching_resource_01-2022
+  [sru1105] Forking sru1105/FaceTheBeat… → 256thFission/FaceTheBeat
+  [VarunShelke] Forking VarunShelke/smart-attendance-tracker… → 256thFission/smart-attendance-tracker
+  [akshatsabavat] Forking akshatsabavat/Rocketsearch.io… → 256thFission/Rocketsearch.io
+  [Ronak-mahajan] Forking Ronak-mahajan/options-dashboard… → 256thFission/options-dashboard
+  [wiz002-ucsd] Forking wiz002-ucsd/lumaa-spring-2025-swe… → 256thFission/lumaa-spring-2025-swe
+  [SwetaleenaGuha] Forking SwetaleenaGuha/viz-recommendation-task… → 256thFission/viz-recommendation-task
+
+============================================================
+PHASE 2: CREATING PRS
+============================================================
+  [BruceMcRooster] 256thFission/PromKit… PR #1
+  [ap-1] 256thFission/balladeer… PR #1
+  [chloe-yan] 256thFission/network… PR #1
+  [cirex-web] 256thFission/02261-lab-3… PR #1
+  [laasyaaki] 256thFission/scottylabs.org… PR #1
+  [tsurbs] 256thFission/StravAnalysis… PR #1
+  [xavilien] 256thFission/convex-telegram… PR #1
+  [GhostOf0days] 256thFission/Reddit-Data-Scraper… PR #1
+  [maelleallanic] 256thFission/scottylabs.org… PR #1
+  [Yuxiang-Huang] 256thFission/Piece-By-Piece… PR #1
+  [hanabenko] 256thFission/gwc-humanizeai-final-git…   PR creation failed: 422 {"message":"Validation Failed","errors":[{"resource":"PullRequest","code":"custom","message":"No commits between wall-of-shame-baseline and main"}],"documentation_url":"https://docs.github.com/rest/pu
+PR failed
+  [SnowballSH] 256thFission/Avalanche… PR #1
+  [adityamittal13] 256thFission/MR_Infectious_Diseases… PR #1
+  [SunfishTK1] 256thFission/graphly… PR #1
+  [256thfission] 256thFission/TMA-Segmentation-Crop… PR #1
+  [knaoinr] 256thFission/shiny-plugin… PR #1
+  [icyviolet23] 256thFission/UChicagoTrading…   PR creation failed: 422 {"message":"Validation Failed","errors":[{"resource":"PullRequest","code":"custom","message":"No commits between wall-of-shame-baseline and main"}],"documentation_url":"https://docs.github.com/rest/pu
+PR failed
+  [btwj] 256thFission/tree-sitter-virgil… PR #1
+  [anudaweerasinghe] 256thFission/govi-mithuru-ai… PR #1
+  [luca-borletti] 256thFission/engage-ai… PR #1
+  [mgmgperson] 256thFission/pokemon-manager… PR #1
+  [porkboi] 256thFission/docs-1…   PR creation failed: 422 {"message":"Validation Failed","errors":[{"resource":"PullRequest","code":"custom","message":"No commits between wall-of-shame-baseline and main"}],"documentation_url":"https://docs.github.com/rest/pu
+PR failed
+  [lynzhlang] 256thFission/nodebb-theme-harmony-bearries… PR #1
+  [Lhwhatever] 256thFission/cmrc-microcontroller-2021… PR #1
+  [aattiyah] 256thFission/basic-web-app-f24… PR #1
+  [HeidiTao] 256thFission/basic-web-app-f24… PR #1
+  [joharkhan99] 256thFission/TextifyImage… PR #1
+  [jhtl99] 256thFission/PRogue… PR #1
+  [wlmchen] 256thFission/periodic-table-tui… PR #1
+  [IndyaG] 256thFission/cmucourses… PR #1
+  [dkhalifa25] 256thFission/cmucourses… PR #1
+  [Akulxsharma] 256thFission/Juny… PR #1
+  [mkhisty] 256thFission/zap… PR #1
+  [Ykalani] 256thFission/movie-rec… PR #1
+  [shane-thoma] 256thFission/student-assistant… PR #1
+  [Harikeshav-R] 256thFission/mazdoor-sahay… PR #1
+  [Ellylai] 256thFission/twa… PR #1
+  [ChiranshuDoshi] 256thFission/MonteCarloOptionPricer… PR #1
+  [Rx-11] 256thFission/ticketing… PR #1
+  [mohitk24] 256thFission/humanitarian-funding-efficiency-datathon-2026… PR #1
+  [Junsouh] 256thFission/governance… PR #1
+  [Jtsiv1] 256thFission/quadratic_teaching_resource_01-2022… PR #1
+  [sru1105] 256thFission/FaceTheBeat…   PR creation failed: 422 {"message":"Validation Failed","errors":[{"resource":"PullRequest","code":"custom","message":"No commits between wall-of-shame-baseline and main"}],"documentation_url":"https://docs.github.com/rest/pu
+PR failed
+  [VarunShelke] 256thFission/smart-attendance-tracker… PR #1
+  [akshatsabavat] 256thFission/Rocketsearch.io… PR #1
+  [Ronak-mahajan] 256thFission/options-dashboard… PR #1
+  [wiz002-ucsd] 256thFission/lumaa-spring-2025-swe… PR #1
+  [SwetaleenaGuha] 256thFission/viz-recommendation-task…   PR creation failed: 422 {"message":"Validation Failed","errors":[{"resource":"PullRequest","code":"custom","message":"No commits between wall-of-shame-baseline and main"}],"documentation_url":"https://docs.github.com/rest/pu
+PR failed
+
+============================================================
+PHASE 3: POSTING JUDGING COMMENTS
+============================================================
+  [BruceMcRooster] Commenting on 256thFission/PromKit PR #1… OK
+  [ap-1] Commenting on 256thFission/balladeer PR #1… OK
+  [chloe-yan] Commenting on 256thFission/network PR #1… OK
+  [cirex-web] Commenting on 256thFission/02261-lab-3 PR #1… OK
+  [laasyaaki] Commenting on 256thFission/scottylabs.org PR #1… OK
+  [tsurbs] Commenting on 256thFission/StravAnalysis PR #1… OK
+  [xavilien] Commenting on 256thFission/convex-telegram PR #1… OK
+  [GhostOf0days] Commenting on 256thFission/Reddit-Data-Scraper PR #1… OK
+  [maelleallanic] Commenting on 256thFission/scottylabs.org PR #1… OK
+  [Yuxiang-Huang] Commenting on 256thFission/Piece-By-Piece PR #1… OK
+  [SnowballSH] Commenting on 256thFission/Avalanche PR #1… OK
+  [adityamittal13] Commenting on 256thFission/MR_Infectious_Diseases PR #1… OK
+  [SunfishTK1] Commenting on 256thFission/graphly PR #1… OK
+  [256thfission] Commenting on 256thFission/TMA-Segmentation-Crop PR #1… OK
+  [knaoinr] Commenting on 256thFission/shiny-plugin PR #1… OK
+  [btwj] Commenting on 256thFission/tree-sitter-virgil PR #1… OK
+  [anudaweerasinghe] Commenting on 256thFission/govi-mithuru-ai PR #1… OK
+  [luca-borletti] Commenting on 256thFission/engage-ai PR #1… OK
+  [mgmgperson] Commenting on 256thFission/pokemon-manager PR #1… OK
+  [lynzhlang] Commenting on 256thFission/nodebb-theme-harmony-bearries PR #1… OK
+  [Lhwhatever] Commenting on 256thFission/cmrc-microcontroller-2021 PR #1… OK
+  [aattiyah] Commenting on 256thFission/basic-web-app-f24 PR #1… OK
+  [HeidiTao] Commenting on 256thFission/basic-web-app-f24 PR #1… OK
+  [joharkhan99] Commenting on 256thFission/TextifyImage PR #1… OK
+  [jhtl99] Commenting on 256thFission/PRogue PR #1… OK
+  [wlmchen] Commenting on 256thFission/periodic-table-tui PR #1… OK
+  [IndyaG] Commenting on 256thFission/cmucourses PR #1… OK
+  [dkhalifa25] Commenting on 256thFission/cmucourses PR #1… OK
+  [Akulxsharma] Commenting on 256thFission/Juny PR #1… OK
+  [mkhisty] Commenting on 256thFission/zap PR #1… OK
+  [Ykalani] Commenting on 256thFission/movie-rec PR #1… OK
+  [shane-thoma] Commenting on 256thFission/student-assistant PR #1… OK
+  [Harikeshav-R] Commenting on 256thFission/mazdoor-sahay PR #1… OK
+  [Ellylai] Commenting on 256thFission/twa PR #1… OK
+  [ChiranshuDoshi] Commenting on 256thFission/MonteCarloOptionPricer PR #1… OK
+  [Rx-11] Commenting on 256thFission/ticketing PR #1… OK
+  [mohitk24] Commenting on 256thFission/humanitarian-funding-efficiency-datathon-2026 PR #1… OK
+  [Junsouh] Commenting on 256thFission/governance PR #1… OK
+  [Jtsiv1] Commenting on 256thFission/quadratic_teaching_resource_01-2022 PR #1… OK
+  [VarunShelke] Commenting on 256thFission/smart-attendance-tracker PR #1… OK
+  [akshatsabavat] Commenting on 256thFission/Rocketsearch.io PR #1… OK
+  [Ronak-mahajan] Commenting on 256thFission/options-dashboard PR #1… OK
+  [wiz002-ucsd] Commenting on 256thFission/lumaa-spring-2025-swe PR #1… OK
+
+============================================================
+PHASE 4: POLLING FOR CODERABBIT RESPONSES
+============================================================
+  Waiting for 43 responses…
+
+  [BruceMcRooster] ✓ Grade: D+  Badge: It Worked Once™ (2023 Edition)
+  [ap-1] ✓ Grade: D+  Badge: Environment Variable Collector
+  [chloe-yan] ✓ Grade: D+  Badge: YOLO Exception Handler
+  [cirex-web] ✓ Grade: D+  Badge: Commented-Out Code Hoarder
+  [laasyaaki] ✓ Grade: C  Badge: TODO-Driven Development
+  [tsurbs] ✓ Grade: D-  Badge: Dependency Denier
+  [xavilien] ✓ Grade: D+  Badge: Happy Path Optimist
+  [maelleallanic] ✓ Grade: C  Badge: TODO-Driven Development
+  [adityamittal13] ✓ Grade: D-  Badge: Research Code Dumper
+  [SunfishTK1] ✓ Grade: D+  Badge: Visualization Library Collector
+  [knaoinr] ✓ Grade: C  Badge: Property Binding Maximalist
+  [btwj] ✓ Grade: D+  Badge: Grammar Compiler Dependency
+  [luca-borletti] ✓ Grade: C-  Badge: Copy-Paste Scholar (kept all Google copyright headers)
+  [lynzhlang] ✓ Grade: D+  Badge: Raw-Dogging Async Since 2026
+  [Lhwhatever] ✓ Grade: D-  Badge: Copy-Paste Cosmonaut
+  [aattiyah] ✓ Grade: D+  Badge: YOLO Error Handler
+  [HeidiTao] ✓ Grade: D+  Badge: YOLO Error Handler
+  [joharkhan99] ✓ Grade: F+  Badge: Race Condition Speedrunner
+  [IndyaG] ✓ Grade: Pending  Badge: Unknown
+  [dkhalifa25] ✓ Grade: Pending  Badge: Unknown
+  [Akulxsharma] ✓ Grade: Pending  Badge: Unknown
+  [mkhisty] ✓ Grade: Pending  Badge: Unknown
+  [Ykalani] ✓ Grade: Pending  Badge: Unknown
+  [shane-thoma] ✓ Grade: Pending  Badge: Unknown
+  [Harikeshav-R] ✓ Grade: Pending  Badge: Unknown
+  [Ellylai] ✓ Grade: Pending  Badge: Unknown
+  [ChiranshuDoshi] ✓ Grade: Pending  Badge: Unknown
+  [mohitk24] ✓ Grade: Pending  Badge: Unknown
+  [Junsouh] ✓ Grade: Pending  Badge: Unknown
+  [Jtsiv1] ✓ Grade: Pending  Badge: Unknown
+  [VarunShelke] ✓ Grade: Pending  Badge: Unknown
+  [akshatsabavat] ✓ Grade: Pending  Badge: Unknown
+  [Ronak-mahajan] ✓ Grade: Pending  Badge: Unknown
+  [wiz002-ucsd] ✓ Grade: Pending  Badge: Unknown
+  … 9 still waiting (9s elapsed)
+  [Yuxiang-Huang] ✓ Grade: D+  Badge: Physics Denier (Confessed in Comments)
+  [SnowballSH] ✓ Grade: C+  Badge: Deprecated Toolchain Enthusiast
+  [256thfission] ✓ Grade: C+  Badge: Compiles != Complete
+  [anudaweerasinghe] ✓ Grade: D+  Badge: YOLO Exception Handler
+  [mgmgperson] ✓ Grade: D+  Badge: Rewrite-From-Scratch Enthusiast
+  [wlmchen] ✓ Grade: C+  Badge: Exception Swallower Extraordinaire
+  … 3 still waiting (41s elapsed)
+  [jhtl99] ✓ Grade: D+  Badge: Reference Implementation Envyer
+  … 2 still waiting (72s elapsed)
+  … 2 still waiting (103s elapsed)
+  [GhostOf0days] ✓ Grade: D  Badge: Cargo-Cult Distributed
+  [Rx-11] ✓ Grade: D+  Badge: Dependency Window Shopper
+
+============================================================
+PHASE 5: GENERATING AGGREGATE REPORT
+============================================================
+  Report saved to coderabbit_report.json
+
+============================================================
+RESULTS: 27/48 users graded
+Saved to judge_results.json
+============================================================

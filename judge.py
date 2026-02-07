@@ -470,16 +470,21 @@ def phase_poll(precomputed: dict, state: dict) -> dict:
                     continue
                 if len(body) < 200:
                     continue
-                if True:
-                    result = parse_coderabbit_response(body)
-                    print(f"  [{username}] ✓ Grade: {result['quality_grade']}  "
-                          f"Badge: {result['coderabbit_badge']}")
-                    state[username]["response_parsed"] = True
-                    state[username]["result"] = result
-                    state[username]["raw_response"] = body
-                    save_state(state)
-                    found = True
-                    break
+                # Skip auto-review walkthroughs that don't contain a judging response
+                # The actual judging response will contain "grade" (from the JSON block)
+                has_grade_json = "```json" in body and "grade" in body.lower()
+                has_grade_text = re.search(r"(?:grade|Grade|GRADE)[:\s]+[A-F][+-]?", body)
+                if not has_grade_json and not has_grade_text:
+                    continue
+                result = parse_coderabbit_response(body)
+                print(f"  [{username}] ✓ Grade: {result['quality_grade']}  "
+                      f"Badge: {result['coderabbit_badge']}")
+                state[username]["response_parsed"] = True
+                state[username]["result"] = result
+                state[username]["raw_response"] = body
+                save_state(state)
+                found = True
+                break
 
             if not found:
                 still_pending.append(username)
@@ -599,6 +604,8 @@ def main():
     parser = argparse.ArgumentParser(description="CodeRabbit AI Judge Pipeline")
     parser.add_argument("--phase", choices=["fork", "pr", "comment", "poll", "report", "all"],
                         default="all", help="Run a specific phase (default: all)")
+    parser.add_argument("--repoll-pending", action="store_true",
+                        help="Clear 'Pending' results so poll phase retries them")
     args = parser.parse_args()
 
     if not PRECOMPUTED_FILE.exists():
@@ -606,6 +613,20 @@ def main():
 
     precomputed = json.loads(PRECOMPUTED_FILE.read_text())
     state = load_state()
+
+    # Reset Pending results so they get re-polled
+    if args.repoll_pending:
+        cleared = 0
+        for username, user_state in state.items():
+            result = user_state.get("result", {})
+            if result.get("quality_grade") == "Pending" and user_state.get("response_parsed"):
+                del user_state["response_parsed"]
+                del user_state["result"]
+                if "raw_response" in user_state:
+                    del user_state["raw_response"]
+                cleared += 1
+        save_state(state)
+        print(f"Cleared {cleared} Pending results for re-polling")
 
     print(f"Wall of Shame — CodeRabbit Judge Pipeline")
     print(f"Users: {len(precomputed)}  |  Token: ADMIN  |  Phase: {args.phase}")

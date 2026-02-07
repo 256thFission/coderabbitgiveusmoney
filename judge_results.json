@@ -1,7 +1,242 @@
 {
+  "BruceMcRooster": {
+    "quality_grade": "D+",
+    "verdict": "5000-char inline HTML in registration_email.py, no requirements.txt, hardcoded Sheet IDs, duplicated credentials.py. README admits 'state unknown.' Classic 2023 hackathon artifact.",
+    "coderabbit_badge": "It Worked Once\u2122 (2023 Edition)"
+  },
+  "ap-1": {
+    "quality_grade": "D+",
+    "verdict": "Zero tests, boilerplate README, console.log(emblaApi.slideNodes()) in character.tsx, dead JSX in content.tsx, and env.mjs hoards 3 AI keys but uses 1. Hackathon hustle meets technical debt.",
+    "coderabbit_badge": "Environment Variable Collector"
+  },
+  "chloe-yan": {
+    "quality_grade": "D+",
+    "verdict": "Zero tests, zero README, centrality API endpoint blindly trusts client JSON with no try-catch. 2200 lines with 12 comment lines says it all.",
+    "coderabbit_badge": "YOLO Exception Handler"
+  },
+  "cirex-web": {
+    "quality_grade": "D+",
+    "verdict": "Infinite while(True) with random.randint, hardcoded 9999999 as MAX_INT, line 133's 'I was lazy' comment, zero tests\u2014your PCR primers have better documentation than this repo.",
+    "coderabbit_badge": "Commented-Out Code Hoarder"
+  },
+  "laasyaaki": {
+    "quality_grade": "C",
+    "verdict": "main.ts runs unhandled setInterval GitHub scrapes every 10s, CORS accepts anything ('should probably be more strict'), test script literally exits 1, and github.ts has zero error handling.",
+    "coderabbit_badge": "TODO-Driven Development"
+  },
+  "tsurbs": {
+    "quality_grade": "D-",
+    "verdict": "LSTMComplete.py crashes on line 6 (loadDiscMaps undefined), nlpType exists twice, pyproject.toml lists zero deps despite needing torch+sklearn, and your error handling is literally print('rip').",
+    "coderabbit_badge": "Dependency Denier"
+  },
+  "xavilien": {
+    "quality_grade": "D+",
+    "verdict": "index.ts is a console.log shrine, functions.ts blindly accesses req.message.text with zero validation, and you YOLO through async bot calls with no error handling.",
+    "coderabbit_badge": "Happy Path Optimist"
+  },
+  "GhostOf0days": {
+    "quality_grade": "D",
+    "verdict": "scraper.py: `@delayed` process_subreddit, delayed(sum)(results) on None; scraper-with-proxy-rotation.py deque(proxies) on a string, write_to_json args wrong; README typos; no tests or try/except.",
+    "coderabbit_badge": "Cargo-Cult Distributed"
+  },
+  "maelleallanic": {
+    "quality_grade": "C",
+    "verdict": "main.ts runs unhandled setInterval GitHub scrapes every 10s, CORS accepts anything ('should probably be more strict'), test script literally exits 1, and github.ts has zero error handling.",
+    "coderabbit_badge": "TODO-Driven Development"
+  },
+  "Yuxiang-Huang": {
+    "quality_grade": "D+",
+    "verdict": "Comments say 'dont know why HALF_PI is necessary' and 'only defy physics for pentagon.' Zero tests, zero try-catch, 22 magic numbers. Hackathon or confession booth?",
+    "coderabbit_badge": "Physics Denier (Confessed in Comments)"
+  },
+  "hanabenko": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "SnowballSH": {
+    "quality_grade": "C+",
+    "verdict": "Stage1 compiler + 20 global pub vars in engine/* = threading nightmares waiting to happen. 211 comments in 5328 lines. c_allocator everywhere. It's C cosplaying as Zig.",
+    "coderabbit_badge": "Deprecated Toolchain Enthusiast"
+  },
+  "adityamittal13": {
+    "quality_grade": "D-",
+    "verdict": "Hardcoded paths to two different laptops, undefined 'ao' variable, 145 output files committed, and missing rf.rdata. Peak 'Works On My Machine\u2122' energy.",
+    "coderabbit_badge": "Research Code Dumper"
+  },
+  "SunfishTK1": {
+    "quality_grade": "D+",
+    "verdict": "Empty data_augmentation.py and hi.txt? Seven viz demos for a GraphRAG hack? No README, no tests, just pickles and PNGs scattered like shrapnel.",
+    "coderabbit_badge": "Visualization Library Collector"
+  },
+  "256thfission": {
+    "quality_grade": "C+",
+    "verdict": "Modular facade hiding print() debugging spam, warnings.filterwarnings('ignore'), 803-line 'clean' file, and exactly zero tests. Hackathon code that learned to shower.",
+    "coderabbit_badge": "Compiles != Complete"
+  },
+  "knaoinr": {
+    "quality_grade": "C",
+    "verdict": "XboxWidget sports a 437-line initialize() method of pure property-binding spaghetti with zero try-catch blocks and magic number coordinates. StringBuffer in 2025? Adorable.",
+    "coderabbit_badge": "Property Binding Maximalist"
+  },
+  "icyviolet23": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "btwj": {
+    "quality_grade": "D+",
+    "verdict": "Empty README, zero tests, 26K lines of auto-generated parser.c. The only human-written code is grammar.js \u2014 congrats, you filled out a DSL form.",
+    "coderabbit_badge": "Grammar Compiler Dependency"
+  },
+  "anudaweerasinghe": {
+    "quality_grade": "D+",
+    "verdict": "Zero try-catch blocks across Pinecone/Cohere/Anthropic calls in app.py, no README, no tests, hardcoded model names + DigitalOcean URLs\u2014one API timeout nukes your chatbot.",
+    "coderabbit_badge": "YOLO Exception Handler"
+  },
+  "luca-borletti": {
+    "quality_grade": "C-",
+    "verdict": "App.test.tsx checks for 'learn react' text that doesn't exist. Python API has 'demo'/'demo' hardcoded creds with zero error handling. 24 console.logs.",
+    "coderabbit_badge": "Copy-Paste Scholar (kept all Google copyright headers)"
+  },
+  "mgmgperson": {
+    "quality_grade": "D+",
+    "verdict": "Two frontends because fixing one was too hard, zero tests except create-react-app boilerplate, 15 TODOs, console.log debugging in 10+ files, and a 6-line README.",
+    "coderabbit_badge": "Rewrite-From-Scratch Enthusiast"
+  },
+  "porkboi": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
   "lynzhlang": {
     "quality_grade": "D+",
-    "verdict": "296 lines of jQuery YOLO with 11 async functions, 10 have zero error handling. Your api.put() in setupMobileMenu silently eats failures. Zero tests.",
-    "coderabbit_badge": "Error? What Error? \ud83e\udd37\u200d\u2642\ufe0f"
+    "verdict": "setTimeout(buildSkins, 0) at library.js:40, var in 2026 at admin.js:4, 10/11 async functions raw-dogging I/O with zero error handling. No tests. Claims MIT but forgot LICENSE.",
+    "coderabbit_badge": "Raw-Dogging Async Since 2026"
+  },
+  "Lhwhatever": {
+    "quality_grade": "D-",
+    "verdict": "Flight computer with owen.py, andrewsgambit.py as module names, stepper.py.backup for 'version control', zero tests for parachute logic, and no README. Bold.",
+    "coderabbit_badge": "Copy-Paste Cosmonaut"
+  },
+  "aattiyah": {
+    "quality_grade": "D+",
+    "verdict": "QueryProcessor.tsx: 100-line if-else pyramid with zero error handling and regex that'll explode on malformed input. Also, .tsx extension for a string function?",
+    "coderabbit_badge": "YOLO Error Handler"
+  },
+  "HeidiTao": {
+    "quality_grade": "D+",
+    "verdict": "QueryProcessor.tsx: 100-line if-else pyramid with zero error handling and regex that'll explode on malformed input. Also, .tsx extension for a string function?",
+    "coderabbit_badge": "YOLO Error Handler"
+  },
+  "joharkhan99": {
+    "quality_grade": "F+",
+    "verdict": "Module-level worker singleton at line 4 terminated after every call at line 12. Second extractTextFromImage() invocation crashes. Zero tests. Peak YOLO.",
+    "coderabbit_badge": "Race Condition Speedrunner"
+  },
+  "jhtl99": {
+    "quality_grade": "D+",
+    "verdict": "Zero error handling, pythonRef/ has more tests than your entire TypeScript app, and you shipped Vite's template README as documentation.",
+    "coderabbit_badge": "Reference Implementation Envyer"
+  },
+  "wlmchen": {
+    "quality_grade": "C+",
+    "verdict": "Bare `except:` at line 265 swallows KeyboardInterrupt, another at 285 silently fails. Zero tests. 400-line god class with vars like `z`, `i`, `l`, `s`, `m`. That `# e` comment in __init__.py? Chef's kiss.",
+    "coderabbit_badge": "Exception Swallower Extraordinaire"
+  },
+  "IndyaG": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "dkhalifa25": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Akulxsharma": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "mkhisty": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Ykalani": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "shane-thoma": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Harikeshav-R": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Ellylai": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "ChiranshuDoshi": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Rx-11": {
+    "quality_grade": "D+",
+    "verdict": "Empty crypto.ts, two unused SQLite deps taking up space, in-memory DB that loses everything on restart, zero tests, and your score function checks if wallets end with 'A'.",
+    "coderabbit_badge": "Dependency Window Shopper"
+  },
+  "mohitk24": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Junsouh": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Jtsiv1": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "sru1105": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "VarunShelke": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "akshatsabavat": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "Ronak-mahajan": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "wiz002-ucsd": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
+  },
+  "SwetaleenaGuha": {
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": "Unknown"
   }
 }

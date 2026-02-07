@@ -1,27 +1,29 @@
 [
   {
-    "username": "GhostOf0days",
-    "name": "Ghost",
-    "bio": "Security researcher & open source enthusiast",
-    "role": "judge",
-    "avatar_url": "https://github.com/GhostOf0days.png",
-    "stars": 342,
-    "commits_last_year": 1891,
-    "followers": 210,
+    "username": "BruceMcRooster",
+    "name": "Evan",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/BruceMcRooster.png",
+    "stars": 1,
+    "commits_last_year": 269,
+    "followers": 7,
     "top_repo": {
-      "name": "vuln-scanner",
-      "stars": 185,
-      "language": "Python",
-      "description": "Automated vulnerability scanner for web apps"
+      "name": "PromKit",
+      "stars": 1,
+      "language": null,
+      "description": null
     },
-    "quality_grade": "B-",
-    "verdict": "You wrote a vulnerability scanner that itself has vulnerabilities. The irony is thicker than your dependency tree.",
-    "coderabbit_badge": "Irony Connoisseur",
-    "sus_score_percentile": 12,
-    "worst_commit_msg": "fix stuff",
-    "worst_commit_toxicity": 0.08,
-    "badges": ["Novel Writer", "Badges Hoarder"],
-    "emoji_score": 3
+    "quality_grade": "D+",
+    "verdict": "5000-char inline HTML in registration_email.py, no requirements.txt, hardcoded Sheet IDs, duplicated credentials.py. README admits 'state unknown.' Classic 2023 hackathon artifact.",
+    "coderabbit_badge": "It Worked Once\u2122 (2023 Edition)",
+    "sus_score_percentile": 0,
+    "worst_commit_msg": "",
+    "worst_commit_toxicity": 0.0,
+    "badges": [
+      "Empty README Enthusiast"
+    ],
+    "emoji_score": 0
   },
   {
     "username": "ap-1",
@@ -34,48 +36,26 @@
     "followers": 35,
     "top_repo": {
       "name": "balladeer",
-      "stars": 12,
-      "language": "Rust",
-      "description": "A ballad-writing CLI tool"
+      "stars": 25,
+      "language": null,
+      "description": null
     },
-    "quality_grade": "C+",
-    "verdict": "You named your project 'balladeer' but the only ballad here is the sad song your error handling sings.",
-    "coderabbit_badge": "Over-Engineered",
-    "sus_score_percentile": 45,
-    "worst_commit_msg": "idk what this does but it works",
-    "worst_commit_toxicity": 0.15,
-    "badges": ["No Tests, No Problem"],
-    "emoji_score": 0
-  },
-  {
-    "username": "BruceMcRooster",
-    "name": "Evan",
-    "bio": "",
-    "role": "participant",
-    "avatar_url": "https://github.com/BruceMcRooster.png",
-    "stars": 1,
-    "commits_last_year": 269,
-    "followers": 7,
-    "top_repo": {
-      "name": "PromKit",
-      "stars": 1,
-      "language": "Swift",
-      "description": "Promise kit for Swift"
-    },
-    "quality_grade": "D+",
-    "verdict": "One star, and I'm pretty sure that was you starring your own repo.",
-    "coderabbit_badge": "Lone Stargazer",
-    "sus_score_percentile": 5,
-    "worst_commit_msg": "WIP",
-    "worst_commit_toxicity": 0.02,
-    "badges": ["Empty README Enthusiast"],
+    "quality_grade": "C-",
+    "verdict": "Zero tests, boilerplate README, console.log(emblaApi.slideNodes()) in character.tsx, dead JSX in content.tsx, and env.mjs hoards 3 AI keys but uses 1. Hackathon hustle meets technical debt.",
+    "coderabbit_badge": "Environment Variable Collector",
+    "sus_score_percentile": 2,
+    "worst_commit_msg": "",
+    "worst_commit_toxicity": 0.0,
+    "badges": [
+      "Empty README Enthusiast"
+    ],
     "emoji_score": 0
   },
   {
     "username": "chloe-yan",
     "name": "Chloe Yan",
     "bio": "",
-    "role": "organizer",
+    "role": "participant",
     "avatar_url": "https://github.com/chloe-yan.png",
     "stars": 0,
     "commits_last_year": 712,
@@ -83,256 +63,1153 @@
     "top_repo": {
       "name": "network",
       "stars": 0,
-      "language": "Python",
-      "description": "Network analysis toolkit"
+      "language": null,
+      "description": null
     },
     "quality_grade": "C-",
-    "verdict": "Zero stars across all repos. Even your mother didn't star your project.",
-    "coderabbit_badge": "Documentation Hater",
-    "sus_score_percentile": 22,
-    "worst_commit_msg": "please work please work please work",
-    "worst_commit_toxicity": 0.04,
-    "badges": ["Empty README Enthusiast", "No Tests, No Problem"],
-    "emoji_score": 0
-  },
-  {
-    "username": "xavilien",
-    "name": "Xavier",
-    "bio": "Building things that sometimes work",
-    "role": "participant",
-    "avatar_url": "https://github.com/xavilien.png",
-    "stars": 89,
-    "commits_last_year": 543,
-    "followers": 62,
-    "top_repo": {
-      "name": "ml-pipeline",
-      "stars": 45,
-      "language": "Python",
-      "description": "End-to-end ML pipeline framework"
-    },
-    "quality_grade": "B+",
-    "verdict": "Your ML pipeline is a pipeline alright — it pipelines garbage in and garbage out with impressive efficiency.",
-    "coderabbit_badge": "Buzzword Architect",
-    "sus_score_percentile": 67,
-    "worst_commit_msg": "added AI to the AI thing :rocket: :fire: :100:",
-    "worst_commit_toxicity": 0.06,
-    "badges": ["Novel Writer", "Badges Hoarder"],
-    "emoji_score": 24
-  },
-  {
-    "username": "SnowballSH",
-    "name": "Snowball",
-    "bio": "Competitive programmer turned software engineer",
-    "role": "participant",
-    "avatar_url": "https://github.com/SnowballSH.png",
-    "stars": 156,
-    "commits_last_year": 890,
-    "followers": 95,
-    "top_repo": {
-      "name": "algo-lib",
-      "stars": 78,
-      "language": "C++",
-      "description": "Competitive programming algorithm library"
-    },
-    "quality_grade": "A-",
-    "verdict": "Finally, someone who writes code that actually compiles. The bar was underground and you barely cleared it.",
-    "coderabbit_badge": "Actually Competent",
-    "sus_score_percentile": 8,
-    "worst_commit_msg": "optimize this garbage",
-    "worst_commit_toxicity": 0.31,
-    "badges": [],
-    "emoji_score": 1
-  },
-  {
-    "username": "Yuxiang-Huang",
-    "name": "Yuxiang Huang",
-    "bio": "CS @ CMU",
-    "role": "participant",
-    "avatar_url": "https://github.com/Yuxiang-Huang.png",
-    "stars": 45,
-    "commits_last_year": 678,
-    "followers": 28,
-    "top_repo": {
-      "name": "game-engine",
-      "stars": 23,
-      "language": "TypeScript",
-      "description": "Browser-based game engine"
-    },
-    "quality_grade": "C",
-    "verdict": "A game engine that runs at 12 FPS. Congratulations, you've reinvented PowerPoint.",
-    "coderabbit_badge": "Reinventing Wheels",
-    "sus_score_percentile": 34,
-    "worst_commit_msg": "why does nothing work in this stupid language",
-    "worst_commit_toxicity": 0.52,
-    "badges": ["No Tests, No Problem"],
-    "emoji_score": 5
-  },
-  {
-    "username": "maelleallanic",
-    "name": "Maelle Allanic",
-    "bio": "Design & code",
-    "role": "organizer",
-    "avatar_url": "https://github.com/maelleallanic.png",
-    "stars": 18,
-    "commits_last_year": 234,
-    "followers": 41,
-    "top_repo": {
-      "name": "portfolio-v3",
-      "stars": 8,
-      "language": "JavaScript",
-      "description": "My third portfolio redesign this year"
-    },
-    "quality_grade": "D",
-    "verdict": "Three portfolio redesigns and zero actual projects to put in them. The cobbler's children have no shoes.",
-    "coderabbit_badge": "Portfolio Addict",
-    "sus_score_percentile": 55,
-    "worst_commit_msg": "final final FINAL version :sparkles: :tada:",
-    "worst_commit_toxicity": 0.03,
-    "badges": ["Badges Hoarder"],
-    "emoji_score": 18
-  },
-  {
-    "username": "adityamittal13",
-    "name": "Aditya Mittal",
-    "bio": "Full stack developer",
-    "role": "participant",
-    "avatar_url": "https://github.com/adityamittal13.png",
-    "stars": 12,
-    "commits_last_year": 445,
-    "followers": 19,
-    "top_repo": {
-      "name": "todo-app",
-      "stars": 5,
-      "language": "JavaScript",
-      "description": "Yet another todo app"
-    },
-    "quality_grade": "D-",
-    "verdict": "You built a todo app. How original. I bet your next project is a calculator or a weather widget.",
-    "coderabbit_badge": "Tutorial Follower",
-    "sus_score_percentile": 41,
-    "worst_commit_msg": "commit",
-    "worst_commit_toxicity": 0.01,
-    "badges": ["Empty README Enthusiast"],
-    "emoji_score": 2
-  },
-  {
-    "username": "SunfishTK1",
-    "name": "Sunfish",
-    "bio": "Hacking on cool stuff",
-    "role": "judge",
-    "avatar_url": "https://github.com/SunfishTK1.png",
-    "stars": 267,
-    "commits_last_year": 1102,
-    "followers": 150,
-    "top_repo": {
-      "name": "distributed-kv",
-      "stars": 134,
-      "language": "Go",
-      "description": "Distributed key-value store"
-    },
-    "quality_grade": "B",
-    "verdict": "Your distributed KV store is distributed alright — distributed across 47 microservices that could've been a HashMap.",
-    "coderabbit_badge": "Complexity Hoarder",
-    "sus_score_percentile": 29,
-    "worst_commit_msg": "this is the dumbest bug I have ever seen",
-    "worst_commit_toxicity": 0.44,
-    "badges": ["Novel Writer"],
-    "emoji_score": 7
-  },
-  {
-    "username": "tsurbs",
-    "name": "Tyler",
-    "bio": "",
-    "role": "participant",
-    "avatar_url": "https://github.com/tsurbs.png",
-    "stars": 3,
-    "commits_last_year": 156,
-    "followers": 8,
-    "top_repo": {
-      "name": "dotfiles",
-      "stars": 2,
-      "language": "Shell",
-      "description": "My dotfiles"
-    },
-    "quality_grade": "F+",
-    "verdict": "Your most popular repo is your dotfiles. Even your config files are more interesting than your code.",
-    "coderabbit_badge": "Config Warrior",
-    "sus_score_percentile": 15,
-    "worst_commit_msg": "asdfasdfasdf",
-    "worst_commit_toxicity": 0.01,
-    "badges": ["Empty README Enthusiast", "No Tests, No Problem"],
+    "verdict": "Zero tests, zero README, centrality API endpoint blindly trusts client JSON with no try-catch. 2200 lines with 12 comment lines says it all.",
+    "coderabbit_badge": "YOLO Exception Handler",
+    "sus_score_percentile": 4,
+    "worst_commit_msg": "",
+    "worst_commit_toxicity": 0.0,
+    "badges": [
+      "Empty README Enthusiast"
+    ],
     "emoji_score": 0
   },
   {
     "username": "cirex-web",
-    "name": "Cirex",
-    "bio": "Web developer",
+    "name": "Eric Xu",
+    "bio": "CMU CS '27",
     "role": "participant",
     "avatar_url": "https://github.com/cirex-web.png",
-    "stars": 34,
-    "commits_last_year": 389,
-    "followers": 22,
+    "stars": 1,
+    "commits_last_year": 898,
+    "followers": 26,
     "top_repo": {
-      "name": "react-dashboard",
-      "stars": 15,
-      "language": "TypeScript",
-      "description": "Admin dashboard template"
+      "name": "02261-lab-3",
+      "stars": 1,
+      "language": null,
+      "description": null
     },
     "quality_grade": "C-",
-    "verdict": "Another React dashboard. You and every other bootcamp grad had the same final project idea.",
-    "coderabbit_badge": "Bootcamp Graduate",
-    "sus_score_percentile": 72,
-    "worst_commit_msg": "fixed the thing that broke the other thing :bug: :wrench: :pray:",
-    "worst_commit_toxicity": 0.07,
-    "badges": ["Badges Hoarder"],
-    "emoji_score": 15
+    "verdict": "Infinite while(True) with random.randint, hardcoded 9999999 as MAX_INT, line 133's 'I was lazy' comment, zero tests\u2014your PCR primers have better documentation than this repo.",
+    "coderabbit_badge": "Commented-Out Code Hoarder",
+    "sus_score_percentile": 63,
+    "worst_commit_msg": "d\n\nshut up copilot",
+    "worst_commit_toxicity": 0.9360530376434326,
+    "badges": [
+      "Novel Writer",
+      "Badges Hoarder"
+    ],
+    "emoji_score": 17
   },
   {
     "username": "laasyaaki",
-    "name": "Laasya",
-    "bio": "Learning to code",
+    "name": "Laasya Aki",
+    "bio": "CS@CMU",
     "role": "participant",
     "avatar_url": "https://github.com/laasyaaki.png",
-    "stars": 5,
-    "commits_last_year": 198,
-    "followers": 11,
+    "stars": 0,
+    "commits_last_year": 191,
+    "followers": 4,
     "top_repo": {
-      "name": "python-projects",
-      "stars": 3,
-      "language": "Python",
-      "description": "Collection of Python learning projects"
+      "name": "scottylabs.org",
+      "stars": 0,
+      "language": null,
+      "description": null
     },
-    "quality_grade": "D",
-    "verdict": "A repo called 'python-projects'. Plural. Because one abandoned project per repo wasn't enough.",
-    "coderabbit_badge": "Graveyard Keeper",
-    "sus_score_percentile": 38,
-    "worst_commit_msg": "i have no idea what im doing",
-    "worst_commit_toxicity": 0.09,
-    "badges": ["No Tests, No Problem"],
-    "emoji_score": 4
+    "quality_grade": "B",
+    "verdict": "main.ts runs unhandled setInterval GitHub scrapes every 10s, CORS accepts anything ('should probably be more strict'), test script literally exits 1, and github.ts has zero error handling.",
+    "coderabbit_badge": "TODO-Driven Development",
+    "sus_score_percentile": 68,
+    "worst_commit_msg": "empty commit",
+    "worst_commit_toxicity": 0.17015251517295837,
+    "badges": [],
+    "emoji_score": 22
+  },
+  {
+    "username": "tsurbs",
+    "name": "Theo Urban",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/tsurbs.png",
+    "stars": 13,
+    "commits_last_year": 583,
+    "followers": 16,
+    "top_repo": {
+      "name": "StravAnalysis",
+      "stars": 13,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "D-",
+    "verdict": "LSTMComplete.py crashes on line 6 (loadDiscMaps undefined), nlpType exists twice, pyproject.toml lists zero deps despite needing torch+sklearn, and your error handling is literally print('rip').",
+    "coderabbit_badge": "Dependency Denier",
+    "sus_score_percentile": 6,
+    "worst_commit_msg": "commit",
+    "worst_commit_toxicity": 0.17352421581745148,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "xavilien",
+    "name": "Xavier Lien",
+    "bio": "CS @ CMU, Ex-Tech Director of @ScottyLabs ",
+    "role": "participant",
+    "avatar_url": "https://github.com/xavilien.png",
+    "stars": 3,
+    "commits_last_year": 43,
+    "followers": 10,
+    "top_repo": {
+      "name": "convex-telegram",
+      "stars": 3,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C-",
+    "verdict": "index.ts is a console.log shrine, functions.ts blindly accesses req.message.text with zero validation, and you YOLO through async bot calls with no error handling.",
+    "coderabbit_badge": "Happy Path Optimist",
+    "sus_score_percentile": 91,
+    "worst_commit_msg": "Deleted useless kfolds.py",
+    "worst_commit_toxicity": 0.6544203162193298,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 63
+  },
+  {
+    "username": "GhostOf0days",
+    "name": "Jaisal Patel",
+    "bio": "Interested in deep learning and quantitative finance.  GitHub Universe \u201823 Lighthouse Award Winner",
+    "role": "participant",
+    "avatar_url": "https://github.com/GhostOf0days.png",
+    "stars": 18,
+    "commits_last_year": 398,
+    "followers": 81,
+    "top_repo": {
+      "name": "Reddit-Data-Scraper",
+      "stars": 18,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "D+",
+    "verdict": "scraper.py: `@delayed` process_subreddit, delayed(sum)(results) on None; scraper-with-proxy-rotation.py deque(proxies) on a string, write_to_json args wrong; README typos; no tests or try/except.",
+    "coderabbit_badge": "Cargo-Cult Distributed",
+    "sus_score_percentile": 89,
+    "worst_commit_msg": "Remove Dependabot",
+    "worst_commit_toxicity": 0.2081977277994156,
+    "badges": [],
+    "emoji_score": 58
+  },
+  {
+    "username": "maelleallanic",
+    "name": "Maelle Allanic",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/maelleallanic.png",
+    "stars": 0,
+    "commits_last_year": 23,
+    "followers": 2,
+    "top_repo": {
+      "name": "scottylabs.org",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B",
+    "verdict": "main.ts runs unhandled setInterval GitHub scrapes every 10s, CORS accepts anything ('should probably be more strict'), test script literally exits 1, and github.ts has zero error handling.",
+    "coderabbit_badge": "TODO-Driven Development",
+    "sus_score_percentile": 8,
+    "worst_commit_msg": "Complete Human Computer Interaction music recommendation system",
+    "worst_commit_toxicity": 0.0008029271266423166,
+    "badges": [],
+    "emoji_score": 0
+  },
+  {
+    "username": "Yuxiang-Huang",
+    "name": "Yuxiang Huang",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/Yuxiang-Huang.png",
+    "stars": 1,
+    "commits_last_year": 2075,
+    "followers": 13,
+    "top_repo": {
+      "name": "Piece-By-Piece",
+      "stars": 1,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C",
+    "verdict": "Comments say 'dont know why HALF_PI is necessary' and 'only defy physics for pentagon.' Zero tests, zero try-catch, 22 magic numbers. Hackathon or confession booth?",
+    "coderabbit_badge": "Physics Denier (Confessed in Comments)",
+    "sus_score_percentile": 87,
+    "worst_commit_msg": "Delete Trash.png",
+    "worst_commit_toxicity": 0.8391097784042358,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 55
   },
   {
     "username": "hanabenko",
     "name": "Hana Benko",
-    "bio": "Designer who codes",
+    "bio": "",
     "role": "participant",
     "avatar_url": "https://github.com/hanabenko.png",
-    "stars": 28,
-    "commits_last_year": 312,
-    "followers": 45,
+    "stars": 1,
+    "commits_last_year": 146,
+    "followers": 2,
     "top_repo": {
-      "name": "css-art",
-      "stars": 18,
-      "language": "CSS",
-      "description": "Pure CSS illustrations"
+      "name": "gwc-humanizeai-final-git",
+      "stars": 1,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 76,
+    "worst_commit_msg": "Update contact.yml\n\nadded pinterest url",
+    "worst_commit_toxicity": 0.19079206883907318,
+    "badges": [],
+    "emoji_score": 30
+  },
+  {
+    "username": "SnowballSH",
+    "name": "Yinuo Huang",
+    "bio": "Algorithms and Programming Languages enthusiast. I enjoy building cool things.",
+    "role": "participant",
+    "avatar_url": "https://github.com/SnowballSH.png",
+    "stars": 185,
+    "commits_last_year": 351,
+    "followers": 71,
+    "top_repo": {
+      "name": "Avalanche",
+      "stars": 185,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B+",
+    "verdict": "Stage1 compiler + 20 global pub vars in engine/* = threading nightmares waiting to happen. 211 comments in 5328 lines. c_allocator everywhere. It's C cosplaying as Zig.",
+    "coderabbit_badge": "Deprecated Toolchain Enthusiast",
+    "sus_score_percentile": 40,
+    "worst_commit_msg": "a stupid algorithm.ts",
+    "worst_commit_toxicity": 0.9470062851905823,
+    "badges": [],
+    "emoji_score": 2
+  },
+  {
+    "username": "adityamittal13",
+    "name": "Aditya Mittal",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/adityamittal13.png",
+    "stars": 19,
+    "commits_last_year": 108,
+    "followers": 21,
+    "top_repo": {
+      "name": "MR_Infectious_Diseases",
+      "stars": 19,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "D-",
+    "verdict": "Hardcoded paths to two different laptops, undefined 'ao' variable, 145 output files committed, and missing rf.rdata. Peak 'Works On My Machine\u2122' energy.",
+    "coderabbit_badge": "Research Code Dumper",
+    "sus_score_percentile": 34,
+    "worst_commit_msg": "Moo Sick",
+    "worst_commit_toxicity": 0.4042966365814209,
+    "badges": [],
+    "emoji_score": 1
+  },
+  {
+    "username": "SunfishTK1",
+    "name": "Thomas Kanz",
+    "bio": "Undergraduate Artificial Intelligence Student at Carnegie Mellon University's School of Computer Science",
+    "role": "participant",
+    "avatar_url": "https://github.com/SunfishTK1.png",
+    "stars": 2,
+    "commits_last_year": 345,
+    "followers": 5,
+    "top_repo": {
+      "name": "graphly",
+      "stars": 2,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C",
+    "verdict": "Empty data_augmentation.py and hi.txt? Seven viz demos for a GraphRAG hack? No README, no tests, just pickles and PNGs scattered like shrapnel.",
+    "coderabbit_badge": "Visualization Library Collector",
+    "sus_score_percentile": 80,
+    "worst_commit_msg": "intial commit",
+    "worst_commit_toxicity": 0.054678600281476974,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 44
+  },
+  {
+    "username": "256thfission",
+    "name": "Phillip",
+    "bio": "Duke Student, Statistics major, yipeee",
+    "role": "participant",
+    "avatar_url": "https://github.com/256thfission.png",
+    "stars": 2,
+    "commits_last_year": 273,
+    "followers": 3,
+    "top_repo": {
+      "name": "TMA-Segmentation-Crop",
+      "stars": 2,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "A-",
+    "verdict": "Modular facade hiding print() debugging spam, warnings.filterwarnings('ignore'), 803-line 'clean' file, and exactly zero tests. Hackathon code that learned to shower.",
+    "coderabbit_badge": "Compiles != Complete",
+    "sus_score_percentile": 93,
+    "worst_commit_msg": "Fully functional pagination ckpt",
+    "worst_commit_toxicity": 0.9482212662696838,
+    "badges": [],
+    "emoji_score": 69
+  },
+  {
+    "username": "knaoinr",
+    "name": "knaoinr",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/knaoinr.png",
+    "stars": 1,
+    "commits_last_year": 27,
+    "followers": 6,
+    "top_repo": {
+      "name": "shiny-plugin",
+      "stars": 1,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B+",
+    "verdict": "XboxWidget sports a 437-line initialize() method of pure property-binding spaghetti with zero try-catch blocks and magic number coordinates. StringBuffer in 2025? Adorable.",
+    "coderabbit_badge": "Property Binding Maximalist",
+    "sus_score_percentile": 36,
+    "worst_commit_msg": "Turn into sponge!",
+    "worst_commit_toxicity": 0.49247705936431885,
+    "badges": [],
+    "emoji_score": 1
+  },
+  {
+    "username": "icyviolet23",
+    "name": "Tze Hng Loke",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/icyviolet23.png",
+    "stars": 6,
+    "commits_last_year": 0,
+    "followers": 0,
+    "top_repo": {
+      "name": "UChicagoTrading",
+      "stars": 6,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 51,
+    "worst_commit_msg": "allow bomb to destroy",
+    "worst_commit_toxicity": 0.5181354284286499,
+    "badges": [
+      "Empty README Enthusiast",
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 7
+  },
+  {
+    "username": "btwj",
+    "name": "Bradley Teo",
+    "bio": "CS @ CMU",
+    "role": "participant",
+    "avatar_url": "https://github.com/btwj.png",
+    "stars": 3,
+    "commits_last_year": 0,
+    "followers": 27,
+    "top_repo": {
+      "name": "tree-sitter-virgil",
+      "stars": 3,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C",
+    "verdict": "Empty README, zero tests, 26K lines of auto-generated parser.c. The only human-written code is grammar.js \u2014 congrats, you filled out a DSL form.",
+    "coderabbit_badge": "Grammar Compiler Dependency",
+    "sus_score_percentile": 44,
+    "worst_commit_msg": "Some merge-assoc progress",
+    "worst_commit_toxicity": 0.045559242367744446,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 4
+  },
+  {
+    "username": "anudaweerasinghe",
+    "name": "Anuda Weerasinghe",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/anudaweerasinghe.png",
+    "stars": 1,
+    "commits_last_year": 0,
+    "followers": 25,
+    "top_repo": {
+      "name": "govi-mithuru-ai",
+      "stars": 1,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C",
+    "verdict": "Zero try-catch blocks across Pinecone/Cohere/Anthropic calls in app.py, no README, no tests, hardcoded model names + DigitalOcean URLs\u2014one API timeout nukes your chatbot.",
+    "coderabbit_badge": "YOLO Exception Handler",
+    "sus_score_percentile": 10,
+    "worst_commit_msg": "Adds russia garbage example",
+    "worst_commit_toxicity": 0.4902058243751526,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "luca-borletti",
+    "name": "Luca Borletti Trevi\u00f1o",
+    "bio": "CS @ Carnegie Mellon University",
+    "role": "participant",
+    "avatar_url": "https://github.com/luca-borletti.png",
+    "stars": 2,
+    "commits_last_year": 1132,
+    "followers": 7,
+    "top_repo": {
+      "name": "engage-ai",
+      "stars": 2,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B-",
+    "verdict": "App.test.tsx checks for 'learn react' text that doesn't exist. Python API has 'demo'/'demo' hardcoded creds with zero error handling. 24 console.logs.",
+    "coderabbit_badge": "Copy-Paste Scholar (kept all Google copyright headers)",
+    "sus_score_percentile": 97,
+    "worst_commit_msg": "undoing commit debacle",
+    "worst_commit_toxicity": 0.032633136957883835,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 152
+  },
+  {
+    "username": "mgmgperson",
+    "name": "mgmgperson",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/mgmgperson.png",
+    "stars": 2,
+    "commits_last_year": 83,
+    "followers": 1,
+    "top_repo": {
+      "name": "pokemon-manager",
+      "stars": 2,
+      "language": null,
+      "description": null
     },
     "quality_grade": "C+",
-    "verdict": "Your CSS art is impressive until you realize the entire repo has zero JavaScript. It's a museum, not software.",
-    "coderabbit_badge": "Pixel Pusher",
-    "sus_score_percentile": 83,
-    "worst_commit_msg": "make it pretty :sparkles: :rainbow: :art: :heart_eyes: :fire:",
-    "worst_commit_toxicity": 0.02,
-    "badges": ["Badges Hoarder", "Novel Writer"],
-    "emoji_score": 31
+    "verdict": "Two frontends because fixing one was too hard, zero tests except create-react-app boilerplate, 15 TODOs, console.log debugging in 10+ files, and a 6-line README.",
+    "coderabbit_badge": "Rewrite-From-Scratch Enthusiast",
+    "sus_score_percentile": 12,
+    "worst_commit_msg": "Re-init repo",
+    "worst_commit_toxicity": 0.03352726623415947,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "porkboi",
+    "name": "Christian Ang",
+    "bio": "cmu 27' / math / real gs move silently like in lasagna",
+    "role": "participant",
+    "avatar_url": "https://github.com/porkboi.png",
+    "stars": 0,
+    "commits_last_year": 2216,
+    "followers": 9,
+    "top_repo": {
+      "name": "docs",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 65,
+    "worst_commit_msg": "Delete mysite.zip",
+    "worst_commit_toxicity": 0.04036799445748329,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 17
+  },
+  {
+    "username": "lynzhlang",
+    "name": "Lynn Zhang",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/lynzhlang.png",
+    "stars": 0,
+    "commits_last_year": 0,
+    "followers": 0,
+    "top_repo": {
+      "name": "nodebb-theme-harmony-bearries",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C+",
+    "verdict": "setTimeout(buildSkins, 0) at library.js:40, var in 2026 at admin.js:4, 10/11 async functions raw-dogging I/O with zero error handling. No tests. Claims MIT but forgot LICENSE.",
+    "coderabbit_badge": "Raw-Dogging Async Since 2026",
+    "sus_score_percentile": 57,
+    "worst_commit_msg": "change dheading to 0",
+    "worst_commit_toxicity": 0.044859159737825394,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 10
+  },
+  {
+    "username": "Lhwhatever",
+    "name": "Hong Lin",
+    "bio": "CS Student\r\n\r\nCarnegie Mellon University (School of Computer Science) Class of 2025",
+    "role": "participant",
+    "avatar_url": "https://github.com/Lhwhatever.png",
+    "stars": 10,
+    "commits_last_year": 89,
+    "followers": 7,
+    "top_repo": {
+      "name": "cmrc-microcontroller-2021",
+      "stars": 10,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "D",
+    "verdict": "Flight computer with owen.py, andrewsgambit.py as module names, stepper.py.backup for 'version control', zero tests for parachute logic, and no README. Bold.",
+    "coderabbit_badge": "Copy-Paste Cosmonaut",
+    "sus_score_percentile": 61,
+    "worst_commit_msg": "Add pagination to TrackTable",
+    "worst_commit_toxicity": 0.15655389428138733,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 15
+  },
+  {
+    "username": "aattiyah",
+    "name": "aattiyah",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/aattiyah.png",
+    "stars": 0,
+    "commits_last_year": 0,
+    "followers": 0,
+    "top_repo": {
+      "name": "basic-web-app-f24",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "C+",
+    "verdict": "QueryProcessor.tsx: 100-line if-else pyramid with zero error handling and regex that'll explode on malformed input. Also, .tsx extension for a string function?",
+    "coderabbit_badge": "YOLO Error Handler",
+    "sus_score_percentile": 14,
+    "worst_commit_msg": "what is your name?",
+    "worst_commit_toxicity": 0.0014798842603340745,
+    "badges": [],
+    "emoji_score": 0
+  },
+  {
+    "username": "HeidiTao",
+    "name": "Heidi Tao",
+    "bio": "Information Systems student at Carnegie Mellon University",
+    "role": "participant",
+    "avatar_url": "https://github.com/HeidiTao.png",
+    "stars": 4,
+    "commits_last_year": 196,
+    "followers": 2,
+    "top_repo": {
+      "name": "basic-web-app",
+      "stars": 4,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B-",
+    "verdict": "QueryProcessor.tsx: 100-line if-else pyramid with zero error handling and regex that'll explode on malformed input. Also, .tsx extension for a string function?",
+    "coderabbit_badge": "YOLO Error Handler",
+    "sus_score_percentile": 85,
+    "worst_commit_msg": "Merge branch 'main' into fix_neg_error",
+    "worst_commit_toxicity": 0.026402238756418228,
+    "badges": [],
+    "emoji_score": 53
+  },
+  {
+    "username": "joharkhan99",
+    "name": "Johar Khan",
+    "bio": "Software Engineer",
+    "role": "participant",
+    "avatar_url": "https://github.com/joharkhan99.png",
+    "stars": 12,
+    "commits_last_year": 174,
+    "followers": 17,
+    "top_repo": {
+      "name": "TextifyImage",
+      "stars": 12,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "F",
+    "verdict": "Module-level worker singleton at line 4 terminated after every call at line 12. Second extractTextFromImage() invocation crashes. Zero tests. Peak YOLO.",
+    "coderabbit_badge": "Race Condition Speedrunner",
+    "sus_score_percentile": 46,
+    "worst_commit_msg": "",
+    "worst_commit_toxicity": 0.0,
+    "badges": [],
+    "emoji_score": 5
+  },
+  {
+    "username": "jhtl99",
+    "name": "jhtl99",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/jhtl99.png",
+    "stars": 0,
+    "commits_last_year": 270,
+    "followers": 0,
+    "top_repo": {
+      "name": "PRogue",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B-",
+    "verdict": "Zero error handling, pythonRef/ has more tests than your entire TypeScript app, and you shipped Vite's template README as documentation.",
+    "coderabbit_badge": "Reference Implementation Envyer",
+    "sus_score_percentile": 17,
+    "worst_commit_msg": "Improved Rat Behaviour",
+    "worst_commit_toxicity": 0.13148579001426697,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "wlmchen",
+    "name": "wlmchen",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/wlmchen.png",
+    "stars": 78,
+    "commits_last_year": 45,
+    "followers": 34,
+    "top_repo": {
+      "name": "periodic-table-tui",
+      "stars": 78,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "A",
+    "verdict": "Bare `except:` at line 265 swallows KeyboardInterrupt, another at 285 silently fails. Zero tests. 400-line god class with vars like `z`, `i`, `l`, `s`, `m`. That `# e` comment in __init__.py? Chef's kiss.",
+    "coderabbit_badge": "Exception Swallower Extraordinaire",
+    "sus_score_percentile": 19,
+    "worst_commit_msg": "git innit",
+    "worst_commit_toxicity": 0.14708374440670013,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "IndyaG",
+    "name": "Indya Griffin",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/IndyaG.png",
+    "stars": 0,
+    "commits_last_year": 8,
+    "followers": 0,
+    "top_repo": {
+      "name": "cmucourses",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 21,
+    "worst_commit_msg": "fdsf",
+    "worst_commit_toxicity": 0.021878089755773544,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "dkhalifa25",
+    "name": "dkhalifa25",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/dkhalifa25.png",
+    "stars": 0,
+    "commits_last_year": 1,
+    "followers": 0,
+    "top_repo": {
+      "name": "cmucourses",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 23,
+    "worst_commit_msg": "Merge pull request #3 from dkhalifa25/fixLine9\n\nFix line9",
+    "worst_commit_toxicity": 0.0009944437770172954,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "Akulxsharma",
+    "name": "AkulSharma",
+    "bio": "Co-Founder @ CodeX | India Representative @ GenXL | FrontEnd Developer | Passionate about Web Development",
+    "role": "participant",
+    "avatar_url": "https://github.com/Akulxsharma.png",
+    "stars": 0,
+    "commits_last_year": 36,
+    "followers": 3,
+    "top_repo": {
+      "name": "Juny",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 53,
+    "worst_commit_msg": "Initial Commit",
+    "worst_commit_toxicity": 0.000729879830032587,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 9
+  },
+  {
+    "username": "mkhisty",
+    "name": "Malhar K",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/mkhisty.png",
+    "stars": 0,
+    "commits_last_year": 335,
+    "followers": 7,
+    "top_repo": {
+      "name": "zap",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 42,
+    "worst_commit_msg": "kjfwkjfw",
+    "worst_commit_toxicity": 0.2990303039550781,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 2
+  },
+  {
+    "username": "Ykalani",
+    "name": "Yash Kalani",
+    "bio": "code",
+    "role": "participant",
+    "avatar_url": "https://github.com/Ykalani.png",
+    "stars": 0,
+    "commits_last_year": 43,
+    "followers": 10,
+    "top_repo": {
+      "name": "movie-rec",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 48,
+    "worst_commit_msg": "Copilot third commit",
+    "worst_commit_toxicity": 0.09168245643377304,
+    "badges": [],
+    "emoji_score": 6
+  },
+  {
+    "username": "shane-thoma",
+    "name": "Shane Thoma",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/shane-thoma.png",
+    "stars": 0,
+    "commits_last_year": 108,
+    "followers": 3,
+    "top_repo": {
+      "name": "student-assistant",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 55,
+    "worst_commit_msg": "Revert \"Delete assets directory\"\n\nThis reverts commit aba826730fbb6a7114edf72121397cf0394f3f94.",
+    "worst_commit_toxicity": 0.006121098529547453,
+    "badges": [],
+    "emoji_score": 9
+  },
+  {
+    "username": "Harikeshav-R",
+    "name": "Harikeshav R",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/Harikeshav-R.png",
+    "stars": 13,
+    "commits_last_year": 1853,
+    "followers": 26,
+    "top_repo": {
+      "name": "mazdoor-sahay",
+      "stars": 13,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 70,
+    "worst_commit_msg": "Remove shutil import",
+    "worst_commit_toxicity": 0.07767924666404724,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 22
+  },
+  {
+    "username": "Ellylai",
+    "name": "Ellyse Lai",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/Ellylai.png",
+    "stars": 0,
+    "commits_last_year": 543,
+    "followers": 1,
+    "top_repo": {
+      "name": "twa",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 78,
+    "worst_commit_msg": "get dummy",
+    "worst_commit_toxicity": 0.8132091760635376,
+    "badges": [
+      "Empty README Enthusiast",
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 35
+  },
+  {
+    "username": "ChiranshuDoshi",
+    "name": "ChiranshuDoshi",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/ChiranshuDoshi.png",
+    "stars": 0,
+    "commits_last_year": 7,
+    "followers": 0,
+    "top_repo": {
+      "name": "MonteCarloOptionPricer",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 74,
+    "worst_commit_msg": "first commit",
+    "worst_commit_toxicity": 0.02884022146463394,
+    "badges": [],
+    "emoji_score": 23
+  },
+  {
+    "username": "Rx-11",
+    "name": "Vedant Kannawar",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/Rx-11.png",
+    "stars": 0,
+    "commits_last_year": 1054,
+    "followers": 1,
+    "top_repo": {
+      "name": "ticketing",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "B-",
+    "verdict": "Empty crypto.ts, two unused SQLite deps taking up space, in-memory DB that loses everything on restart, zero tests, and your score function checks if wallets end with 'A'.",
+    "coderabbit_badge": "Dependency Window Shopper",
+    "sus_score_percentile": 72,
+    "worst_commit_msg": "first commit",
+    "worst_commit_toxicity": 0.0288402047008276,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 22
+  },
+  {
+    "username": "mohitk24",
+    "name": "Mohit Karangutkar",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/mohitk24.png",
+    "stars": 0,
+    "commits_last_year": 0,
+    "followers": 1,
+    "top_repo": {
+      "name": "humanitarian-funding-efficiency-datathon-2026",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 38,
+    "worst_commit_msg": "",
+    "worst_commit_toxicity": 0.0,
+    "badges": [],
+    "emoji_score": 1
+  },
+  {
+    "username": "Junsouh",
+    "name": "Junsouh",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/Junsouh.png",
+    "stars": 0,
+    "commits_last_year": 34,
+    "followers": 3,
+    "top_repo": {
+      "name": "governance",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 59,
+    "worst_commit_msg": "first commits",
+    "worst_commit_toxicity": 0.0025405115447938442,
+    "badges": [],
+    "emoji_score": 13
+  },
+  {
+    "username": "Jtsiv1",
+    "name": "John Speaks",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/Jtsiv1.png",
+    "stars": 1,
+    "commits_last_year": 212,
+    "followers": 5,
+    "top_repo": {
+      "name": "quadratic_teaching_resource_01-2022",
+      "stars": 1,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 25,
+    "worst_commit_msg": "started updating swagger",
+    "worst_commit_toxicity": 0.007184023968875408,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 0
+  },
+  {
+    "username": "sru1105",
+    "name": "Srushti V Reddy",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/sru1105.png",
+    "stars": 0,
+    "commits_last_year": 11,
+    "followers": 0,
+    "top_repo": {
+      "name": "FaceTheBeat",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 27,
+    "worst_commit_msg": "fix readme",
+    "worst_commit_toxicity": 0.009596223942935467,
+    "badges": [],
+    "emoji_score": 0
+  },
+  {
+    "username": "VarunShelke",
+    "name": "Varun Shelke",
+    "bio": "Medium Stack Engineer",
+    "role": "participant",
+    "avatar_url": "https://github.com/VarunShelke.png",
+    "stars": 1,
+    "commits_last_year": 706,
+    "followers": 1,
+    "top_repo": {
+      "name": "smart-attendance-tracker",
+      "stars": 1,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 100,
+    "worst_commit_msg": "Final Commit",
+    "worst_commit_toxicity": 0.022126058116555214,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 363
+  },
+  {
+    "username": "akshatsabavat",
+    "name": "Akshat Sabavat",
+    "bio": "I see a plane\r\n\r\n",
+    "role": "participant",
+    "avatar_url": "https://github.com/akshatsabavat.png",
+    "stars": 5,
+    "commits_last_year": 1698,
+    "followers": 21,
+    "top_repo": {
+      "name": "Rocketsearch.io",
+      "stars": 5,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 82,
+    "worst_commit_msg": "added pagination slice",
+    "worst_commit_toxicity": 0.5809066891670227,
+    "badges": [
+      "No Tests, No Problem"
+    ],
+    "emoji_score": 52
+  },
+  {
+    "username": "Ronak-mahajan",
+    "name": "Ronak Mahajan",
+    "bio": "Vanderbilt '29\r\n",
+    "role": "participant",
+    "avatar_url": "https://github.com/Ronak-mahajan.png",
+    "stars": 0,
+    "commits_last_year": 10,
+    "followers": 0,
+    "top_repo": {
+      "name": "options-dashboard",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 29,
+    "worst_commit_msg": "Initial commit: Black-Scholes Pricing & Delta Hedging Engine",
+    "worst_commit_toxicity": 0.0011103108990937471,
+    "badges": [],
+    "emoji_score": 0
+  },
+  {
+    "username": "wiz002-ucsd",
+    "name": "William Zhang",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/wiz002-ucsd.png",
+    "stars": 2,
+    "commits_last_year": 98,
+    "followers": 0,
+    "top_repo": {
+      "name": "lumaa-spring-2025-swe",
+      "stars": 2,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 95,
+    "worst_commit_msg": "Adding everything to github",
+    "worst_commit_toxicity": 0.002643464831635356,
+    "badges": [
+      "Novel Writer"
+    ],
+    "emoji_score": 139
+  },
+  {
+    "username": "SwetaleenaGuha",
+    "name": "SwetaleenaGuha",
+    "bio": "",
+    "role": "participant",
+    "avatar_url": "https://github.com/SwetaleenaGuha.png",
+    "stars": 0,
+    "commits_last_year": 2,
+    "followers": 0,
+    "top_repo": {
+      "name": "viz-recommendation-task",
+      "stars": 0,
+      "language": null,
+      "description": null
+    },
+    "quality_grade": "Pending",
+    "verdict": "Pending review\u2026",
+    "coderabbit_badge": null,
+    "sus_score_percentile": 31,
+    "worst_commit_msg": "git 22sept",
+    "worst_commit_toxicity": 0.05516143515706062,
+    "badges": [],
+    "emoji_score": 0
   }
 ]
