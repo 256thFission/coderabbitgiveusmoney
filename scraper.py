@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 """
-Precompute scraper — fetches GitHub profile data for a list of usernames
-via the GraphQL API with multi-token rotation and resumability.
-
-Usage:
-    1. Copy .env.example to .env and fill in your GitHub tokens.
-    2. Populate usernames.txt (one username per line).
-    3. conda env create -f environment.yml && conda activate coderabbit
-    4. python precompute.py
+GitHub scraper module — fetches GitHub profile data via GraphQL API
+with multi-token rotation and resumability.
 """
 
 import itertools
 import json
 import os
 import re
-import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,14 +15,14 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
+from toxicity import analyze_toxicity, find_worst_commit
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 load_dotenv()
 
 GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
-USERNAMES_FILE = Path("usernames.txt")
-OUTPUT_FILE = Path("precomputed.json")
 RAW_DATA_DIR = Path("raw_data")
 
 # ---------------------------------------------------------------------------
@@ -37,7 +30,7 @@ RAW_DATA_DIR = Path("raw_data")
 # ---------------------------------------------------------------------------
 raw_tokens = os.environ.get("GITHUB_TOKENS", "")
 if not raw_tokens:
-    sys.exit("ERROR: GITHUB_TOKENS not set. Copy .env.example to .env and add your tokens.")
+    raise RuntimeError("ERROR: GITHUB_TOKENS not set. Copy .env.example to .env and add your tokens.")
 
 tokens: list[str] = [t.strip() for t in raw_tokens.split(",") if t.strip()]
 token_cycle = itertools.cycle(tokens)
@@ -71,7 +64,7 @@ def record_rate_limit(token_header: str, response: requests.Response) -> None:
 
 
 # ---------------------------------------------------------------------------
-# GraphQL query
+# GraphQL queries
 # ---------------------------------------------------------------------------
 PROFILE_QUERY = """
 query($login: String!) {
@@ -101,31 +94,6 @@ query($login: String!) {
 }
 """
 
-RECENT_COMMITS_QUERY = """
-query($login: String!) {
-  user(login: $login) {
-    repositories(first: 5, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: OWNER) {
-      nodes {
-        name
-        defaultBranchRef {
-          target {
-            ... on Commit {
-              history(first: 10, author: {id: null}) {
-                nodes {
-                  message
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-"""
-
-# Simpler commit query that doesn't filter by author (works without user node ID)
-# Fetches comprehensive commit history: 100 repos, 100 commits per repo
 RECENT_COMMITS_QUERY_SIMPLE = """
 query($login: String!) {
   user(login: $login) {
@@ -197,114 +165,7 @@ def count_emojis(texts: list[str]) -> int:
 
 
 # ---------------------------------------------------------------------------
-# Toxicity detection
-# ---------------------------------------------------------------------------
-_detoxify_model = None
-
-
-def get_toxicity_model():
-    """Lazy-load the Detoxify model to avoid startup overhead."""
-    global _detoxify_model
-    if _detoxify_model is None:
-        from detoxify import Detoxify
-
-        _detoxify_model = Detoxify("original")
-    return _detoxify_model
-
-
-def find_worst_commit(texts: list[str]) -> dict | None:
-    """
-    Analyze toxicity in individual commit messages.
-    Returns dict with the worst commit (highest score on any axis).
-    Returns None if no commits available or analysis fails.
-    """
-    if not texts:
-        return None
-
-    try:
-        model = get_toxicity_model()
-        results = model.predict(texts)
-
-        # Define toxicity axes
-        axes = ["toxicity", "severe_toxicity", "obscene", "threat", "insult", "identity_attack"]
-
-        # Find the worst commit (highest score on any axis)
-        worst_idx = None
-        worst_axis = None
-        worst_score = 0.0
-
-        for idx, text in enumerate(texts):
-            for axis in axes:
-                score = float(results[axis][idx])
-                if score > worst_score:
-                    worst_score = score
-                    worst_idx = idx
-                    worst_axis = axis
-
-        if worst_idx is None:
-            return None
-
-        # Get all scores for the worst commit
-        worst_text = texts[worst_idx]
-        all_scores = {axis: float(results[axis][worst_idx]) for axis in axes}
-
-        return {
-            "message": worst_text,
-            "toxicity_axis": worst_axis,
-            "toxicity_score": worst_score,
-            "all_scores": all_scores,
-        }
-    except Exception as e:
-        print(f"    Finding worst commit failed: {e}")
-        return None
-
-
-def analyze_toxicity(texts: list[str]) -> dict:
-    """
-    Analyze toxicity in a list of texts (commit messages).
-    Returns dict with averaged toxicity scores.
-    Returns all zeros if input is empty or model fails.
-    """
-    if not texts:
-        return {
-            "toxicity": 0.0,
-            "severe_toxicity": 0.0,
-            "obscene": 0.0,
-            "threat": 0.0,
-            "insult": 0.0,
-            "identity_attack": 0.0,
-        }
-
-    try:
-        model = get_toxicity_model()
-        results = model.predict(texts)
-
-        # Average scores across all texts
-        return {
-            key: float(results[key].mean())
-            for key in [
-                "toxicity",
-                "severe_toxicity",
-                "obscene",
-                "threat",
-                "insult",
-                "identity_attack",
-            ]
-        }
-    except Exception as e:
-        print(f"    Toxicity analysis failed: {e}")
-        return {
-            "toxicity": 0.0,
-            "severe_toxicity": 0.0,
-            "obscene": 0.0,
-            "threat": 0.0,
-            "insult": 0.0,
-            "identity_attack": 0.0,
-        }
-
-
-# ---------------------------------------------------------------------------
-# Scraping logic
+# GraphQL execution
 # ---------------------------------------------------------------------------
 MAX_RETRIES = 5
 INITIAL_BACKOFF = 0.5  # seconds
@@ -338,6 +199,39 @@ def graphql(query: str, variables: dict) -> dict:
     return {}  # unreachable
 
 
+# ---------------------------------------------------------------------------
+# Raw data storage
+# ---------------------------------------------------------------------------
+def save_raw_data(username: str, commit_messages: list[str], readme_data: dict, worst_commit: dict | None = None) -> None:
+    """
+    Save raw commit messages, README content, and worst commit to user-specific directory.
+
+    Args:
+        username: GitHub username
+        commit_messages: List of commit message strings
+        readme_data: Dict of {repo_name: readme_content}
+        worst_commit: Dict from find_worst_commit() or None
+    """
+    user_dir = RAW_DATA_DIR / username
+    user_dir.mkdir(parents=True, exist_ok=True)
+
+    # Save commits
+    commits_file = user_dir / "commits.json"
+    commits_file.write_text(json.dumps(commit_messages, indent=2))
+
+    # Save READMEs
+    readmes_file = user_dir / "readmes.json"
+    readmes_file.write_text(json.dumps(readme_data, indent=2))
+
+    # Save worst commit
+    if worst_commit:
+        worst_file = user_dir / "worst_commit.json"
+        worst_file.write_text(json.dumps(worst_commit, indent=2))
+
+
+# ---------------------------------------------------------------------------
+# User scraping
+# ---------------------------------------------------------------------------
 def scrape_user(username: str) -> dict | None:
     """Fetch profile + recent commits for a single user. Returns dict or None on 404."""
     try:
@@ -428,98 +322,3 @@ def scrape_user(username: str) -> dict | None:
         "identity_attack": toxicity_scores["identity_attack"],
         "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
-
-
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
-def load_usernames() -> list[str]:
-    if not USERNAMES_FILE.exists():
-        sys.exit(f"ERROR: {USERNAMES_FILE} not found. Create it with one username per line.")
-    lines = USERNAMES_FILE.read_text().splitlines()
-    names = []
-    seen = set()
-    for line in lines:
-        line = line.strip()
-        if not line or line.startswith("#"):
-            continue
-        lower = line.lower()
-        if lower not in seen:
-            seen.add(lower)
-            names.append(line)
-    return names
-
-
-def load_existing() -> dict:
-    if OUTPUT_FILE.exists():
-        return json.loads(OUTPUT_FILE.read_text())
-    return {}
-
-
-def save(data: dict) -> None:
-    OUTPUT_FILE.write_text(json.dumps(data, indent=2))
-
-
-def save_raw_data(username: str, commit_messages: list[str], readme_data: dict, worst_commit: dict | None = None) -> None:
-    """
-    Save raw commit messages, README content, and worst commit to user-specific directory.
-
-    Args:
-        username: GitHub username
-        commit_messages: List of commit message strings
-        readme_data: Dict of {repo_name: readme_content}
-        worst_commit: Dict from find_worst_commit() or None
-    """
-    user_dir = RAW_DATA_DIR / username
-    user_dir.mkdir(parents=True, exist_ok=True)
-
-    # Save commits
-    commits_file = user_dir / "commits.json"
-    commits_file.write_text(json.dumps(commit_messages, indent=2))
-
-    # Save READMEs
-    readmes_file = user_dir / "readmes.json"
-    readmes_file.write_text(json.dumps(readme_data, indent=2))
-
-    # Save worst commit
-    if worst_commit:
-        worst_file = user_dir / "worst_commit.json"
-        worst_file.write_text(json.dumps(worst_commit, indent=2))
-
-
-def main() -> None:
-    usernames = load_usernames()
-    print(f"Loaded {len(usernames)} usernames from {USERNAMES_FILE}")
-    print(f"Using {len(tokens)} GitHub token(s)")
-
-    existing = load_existing()
-    already = sum(1 for u in usernames if u.lower() in {k.lower() for k in existing})
-    if already:
-        print(f"Resuming — {already} already scraped, {len(usernames) - already} remaining")
-
-    existing_lower = {k.lower(): k for k in existing}
-
-    for i, username in enumerate(usernames, 1):
-        if username.lower() in existing_lower:
-            continue
-
-        print(f"[{i}/{len(usernames)}] Scraping {username}…", end=" ", flush=True)
-        try:
-            result = scrape_user(username)
-        except Exception as e:
-            print(f"ERROR: {e}")
-            continue
-
-        if result is None:
-            print("NOT FOUND (skipped)")
-            continue
-
-        existing[username] = result
-        save(existing)
-        print(f"OK — {result['stars']}★  {result['commits_last_year']} commits  {result['emoji_score']} emoji  toxicity={result['toxicity']:.3f}")
-
-    print(f"\nDone. {len(existing)} users saved to {OUTPUT_FILE}")
-
-
-if __name__ == "__main__":
-    main()

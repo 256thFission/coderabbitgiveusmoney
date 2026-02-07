@@ -1,0 +1,13 @@
+{
+  "message": "Fully functional pagination ckpt",
+  "toxicity_axis": "toxicity",
+  "toxicity_score": 0.9482211470603943,
+  "all_scores": {
+    "toxicity": 0.9482211470603943,
+    "severe_toxicity": 0.016045670956373215,
+    "obscene": 0.6416438817977905,
+    "threat": 0.0032170990016311407,
+    "insult": 0.0738125741481781,
+    "identity_attack": 0.005280229263007641
+  }
+}
