@@ -32,34 +32,26 @@ def main():
         sys.exit(1)
 
     # Analyze toxicity
-    model = Detoxify('original')
+    import torch
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = Detoxify('original', device=device)
+    print(f"Model loaded on {device}")
     results = model.predict(commits)
 
     # Calculate stats (handle both numpy arrays and lists)
     toxicity_scores = results['toxicity']
-    if hasattr(toxicity_scores, 'mean'):
-        # numpy array
-        avg_toxicity = float(toxicity_scores.mean())
-        max_toxicity = float(toxicity_scores.max())
-        max_idx = int(toxicity_scores.argmax())
-    else:
-        # list
-        import statistics
-        avg_toxicity = float(statistics.mean(toxicity_scores))
-        max_toxicity = float(max(toxicity_scores))
-        max_idx = toxicity_scores.index(max_toxicity)
+    avg_toxicity = sum(toxicity_scores) / len(toxicity_scores)
+    max_toxicity = max(toxicity_scores)
+    max_idx = toxicity_scores.index(max_toxicity)
+    worst_commit = commits[max_idx]
 
     # Find worst on each axis
     worst_by_axis = {}
     for axis in ['toxicity', 'severe_toxicity', 'obscene', 'threat', 'insult', 'identity_attack']:
         scores = results[axis]
-        if hasattr(scores, 'argmax'):
-            # numpy array
-            idx = int(scores.argmax())
-        else:
-            # list
-            idx = scores.index(max(scores))
-        worst_by_axis[axis] = (float(scores[idx]), commits[idx])
+        max_score = max(scores)
+        idx = scores.index(max_score)
+        worst_by_axis[axis] = (float(max_score), commits[idx])
 
     # Find the absolute worst on any axis
     worst_overall = None

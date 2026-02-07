@@ -208,7 +208,10 @@ def get_toxicity_model():
     if _detoxify_model is None:
         from detoxify import Detoxify
 
-        _detoxify_model = Detoxify("original")
+        import torch
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        _detoxify_model = Detoxify("original", device=device)
+        print(f"    Toxicity model loaded on {device}")
     return _detoxify_model
 
 
@@ -265,42 +268,45 @@ def analyze_toxicity(texts: list[str]) -> dict:
     Returns dict with averaged toxicity scores.
     Returns all zeros if input is empty or model fails.
     """
+    keys = ["toxicity", "severe_toxicity", "obscene", "threat", "insult", "identity_attack"]
+    zero = {k: 0.0 for k in keys}
+    zero["worst_commit_toxicity"] = 0.0
+    zero["worst_commit_msg"] = ""
+
     if not texts:
-        return {
-            "toxicity": 0.0,
-            "severe_toxicity": 0.0,
-            "obscene": 0.0,
-            "threat": 0.0,
-            "insult": 0.0,
-            "identity_attack": 0.0,
-        }
+        return zero
 
     try:
+        import torch
         model = get_toxicity_model()
-        results = model.predict(texts)
+        all_scores = {k: [] for k in keys}
 
-        # Average scores across all texts
-        return {
-            key: float(results[key].mean())
-            for key in [
-                "toxicity",
-                "severe_toxicity",
-                "obscene",
-                "threat",
-                "insult",
-                "identity_attack",
-            ]
+        # Process in small batches to avoid CUDA OOM
+        batch_size = 32
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i : i + batch_size]
+            with torch.no_grad():
+                results = model.predict(batch)
+            for k in keys:
+                all_scores[k].extend(results[k])
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        # Find the single most toxic commit
+        tox = all_scores["toxicity"]
+        worst_idx = max(range(len(tox)), key=lambda i: tox[i])
+
+        avg = {
+            k: float(sum(all_scores[k]) / len(all_scores[k]))
+            for k in keys
         }
+        avg["worst_commit_toxicity"] = float(tox[worst_idx])
+        avg["worst_commit_msg"] = texts[worst_idx]
+        return avg
     except Exception as e:
         print(f"    Toxicity analysis failed: {e}")
-        return {
-            "toxicity": 0.0,
-            "severe_toxicity": 0.0,
-            "obscene": 0.0,
-            "threat": 0.0,
-            "insult": 0.0,
-            "identity_attack": 0.0,
-        }
+        return zero
 
 
 # ---------------------------------------------------------------------------
@@ -426,6 +432,8 @@ def scrape_user(username: str) -> dict | None:
         "threat": toxicity_scores["threat"],
         "insult": toxicity_scores["insult"],
         "identity_attack": toxicity_scores["identity_attack"],
+        "worst_commit_toxicity": toxicity_scores["worst_commit_toxicity"],
+        "worst_commit_msg": toxicity_scores["worst_commit_msg"],
         "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
 

@@ -1,0 +1,7 @@
+{
+  "lynzhlang": {
+    "quality_grade": "D+",
+    "verdict": "296 lines of jQuery YOLO with 11 async functions, 10 have zero error handling. Your api.put() in setupMobileMenu silently eats failures. Zero tests.",
+    "coderabbit_badge": "Error? What Error? \ud83e\udd37\u200d\u2642\ufe0f"
+  }
+}

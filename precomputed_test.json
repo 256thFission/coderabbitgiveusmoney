@@ -1,0 +1,28 @@
+{
+  "lynzhlang": {
+    "stars": 0,
+    "commits_last_year": 0,
+    "emoji_score": 10,
+    "top_repos": [
+      "nodebb-theme-harmony-bearries",
+      "NodeBB-S24-R3",
+      "NodeBB",
+      "github-recitation-with-test",
+      "froggyyyyyyyyyyyyyy",
+      "cogrob-final-proj",
+      "basic-web-app"
+    ],
+    "bio": "",
+    "name": "Lynn Zhang",
+    "company": "",
+    "location": "",
+    "followers": 0,
+    "toxicity": 0.0025098233993304077,
+    "severe_toxicity": 0.00010933874281155958,
+    "obscene": 0.00030121616911951845,
+    "threat": 0.00011586549264489134,
+    "insult": 0.00023238871437027692,
+    "identity_attack": 0.00015140686829047474,
+    "scraped_at": "2026-02-07T20:21:39.931619+00:00"
+  }
+}
