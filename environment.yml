@@ -1,0 +1,7 @@
+name: coderabbit
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - requests>=2.31.0
+  - python-dotenv>=1.0.0
