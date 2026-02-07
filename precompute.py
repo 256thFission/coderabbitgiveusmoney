@@ -30,6 +30,7 @@ load_dotenv()
 GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
 USERNAMES_FILE = Path("usernames.txt")
 OUTPUT_FILE = Path("precomputed.json")
+RAW_DATA_DIR = Path("raw_data")
 
 # ---------------------------------------------------------------------------
 # Token rotation
@@ -124,16 +125,17 @@ query($login: String!) {
 """
 
 # Simpler commit query that doesn't filter by author (works without user node ID)
+# Fetches comprehensive commit history: 100 repos, 100 commits per repo
 RECENT_COMMITS_QUERY_SIMPLE = """
 query($login: String!) {
   user(login: $login) {
-    repositories(first: 5, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: OWNER) {
+    repositories(first: 100, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: OWNER) {
       nodes {
         name
         defaultBranchRef {
           target {
             ... on Commit {
-              history(first: 10) {
+              history(first: 100) {
                 nodes {
                   message
                   author {
@@ -142,6 +144,23 @@ query($login: String!) {
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+"""
+
+README_QUERY = """
+query($login: String!) {
+  user(login: $login) {
+    repositories(first: 10, orderBy: {field: STARGAZERS, direction: DESC}, ownerAffiliations: OWNER) {
+      nodes {
+        name
+        object(expression: "HEAD:README.md") {
+          ... on Blob {
+            text
           }
         }
       }
@@ -175,6 +194,66 @@ def count_emojis(texts: list[str]) -> int:
         total += len(EMOJI_RE.findall(t))
         total += len(SHORTCODE_RE.findall(t))
     return total
+
+
+# ---------------------------------------------------------------------------
+# Toxicity detection
+# ---------------------------------------------------------------------------
+_detoxify_model = None
+
+
+def get_toxicity_model():
+    """Lazy-load the Detoxify model to avoid startup overhead."""
+    global _detoxify_model
+    if _detoxify_model is None:
+        from detoxify import Detoxify
+
+        _detoxify_model = Detoxify("original")
+    return _detoxify_model
+
+
+def analyze_toxicity(texts: list[str]) -> dict:
+    """
+    Analyze toxicity in a list of texts (commit messages).
+    Returns dict with averaged toxicity scores.
+    Returns all zeros if input is empty or model fails.
+    """
+    if not texts:
+        return {
+            "toxicity": 0.0,
+            "severe_toxicity": 0.0,
+            "obscene": 0.0,
+            "threat": 0.0,
+            "insult": 0.0,
+            "identity_attack": 0.0,
+        }
+
+    try:
+        model = get_toxicity_model()
+        results = model.predict(texts)
+
+        # Average scores across all texts
+        return {
+            key: float(results[key].mean())
+            for key in [
+                "toxicity",
+                "severe_toxicity",
+                "obscene",
+                "threat",
+                "insult",
+                "identity_attack",
+            ]
+        }
+    except Exception as e:
+        print(f"    Toxicity analysis failed: {e}")
+        return {
+            "toxicity": 0.0,
+            "severe_toxicity": 0.0,
+            "obscene": 0.0,
+            "threat": 0.0,
+            "insult": 0.0,
+            "identity_attack": 0.0,
+        }
 
 
 # ---------------------------------------------------------------------------
@@ -256,7 +335,30 @@ def scrape_user(username: str) -> dict | None:
     except Exception:
         pass  # Non-critical — emoji score defaults to 0
 
-    emoji_score = count_emojis(commit_messages)
+    # Fetch READMEs for emoji scoring
+    readme_texts: list[str] = []
+    readme_dict: dict[str, str] = {}  # Store {repo_name: readme_content}
+    try:
+        readme_data = graphql(README_QUERY, {"login": username})
+        repos = readme_data["data"]["user"]["repositories"]["nodes"]
+        for repo in repos:
+            repo_name = repo.get("name", "unknown")
+            obj = repo.get("object")
+            if obj and "text" in obj:
+                readme_content = obj["text"]
+                readme_texts.append(readme_content)
+                readme_dict[repo_name] = readme_content
+    except Exception:
+        pass  # Non-critical — defaults to empty list/dict
+
+    # Combine emoji counts from commits AND READMEs
+    emoji_score = count_emojis(commit_messages + readme_texts)
+
+    # Analyze toxicity in commit messages
+    toxicity_scores = analyze_toxicity(commit_messages)
+
+    # Save raw data for future analysis
+    save_raw_data(username, commit_messages, readme_dict)
 
     return {
         "stars": total_stars,
@@ -268,6 +370,12 @@ def scrape_user(username: str) -> dict | None:
         "company": user.get("company") or "",
         "location": user.get("location") or "",
         "followers": user["followers"]["totalCount"],
+        "toxicity": toxicity_scores["toxicity"],
+        "severe_toxicity": toxicity_scores["severe_toxicity"],
+        "obscene": toxicity_scores["obscene"],
+        "threat": toxicity_scores["threat"],
+        "insult": toxicity_scores["insult"],
+        "identity_attack": toxicity_scores["identity_attack"],
         "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -302,6 +410,27 @@ def save(data: dict) -> None:
     OUTPUT_FILE.write_text(json.dumps(data, indent=2))
 
 
+def save_raw_data(username: str, commit_messages: list[str], readme_data: dict) -> None:
+    """
+    Save raw commit messages and README content to user-specific directory.
+
+    Args:
+        username: GitHub username
+        commit_messages: List of commit message strings
+        readme_data: Dict of {repo_name: readme_content}
+    """
+    user_dir = RAW_DATA_DIR / username
+    user_dir.mkdir(parents=True, exist_ok=True)
+
+    # Save commits
+    commits_file = user_dir / "commits.json"
+    commits_file.write_text(json.dumps(commit_messages, indent=2))
+
+    # Save READMEs
+    readmes_file = user_dir / "readmes.json"
+    readmes_file.write_text(json.dumps(readme_data, indent=2))
+
+
 def main() -> None:
     usernames = load_usernames()
     print(f"Loaded {len(usernames)} usernames from {USERNAMES_FILE}")
@@ -331,7 +460,7 @@ def main() -> None:
 
         existing[username] = result
         save(existing)
-        print(f"OK — {result['stars']}★  {result['commits_last_year']} commits  {result['emoji_score']} emoji")
+        print(f"OK — {result['stars']}★  {result['commits_last_year']} commits  {result['emoji_score']} emoji  toxicity={result['toxicity']:.3f}")
 
     print(f"\nDone. {len(existing)} users saved to {OUTPUT_FILE}")
 
